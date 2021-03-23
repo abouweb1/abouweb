@@ -1,0 +1,57 @@
+@import "../styles/varibles.scss";
+html {
+  font-size: 16px;
+  font-family : $mainFontFamily;
+  
+  @media (max-width : 991px) {
+    font-size: 14px;
+  }
+
+  @media (max-width : 768px) {
+    font-size: 12px;
+  }
+  
+}
+
+body {
+   margin: 0rem;
+}
+
+.layout{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.main{
+  flex-grow: 1;
+}
+
+.container{
+  width: 1280px;
+  margin: 0% auto;
+  overflow: hidden;
+  @media (max-width:1400px) {
+      width: 96%;
+      margin: 0px 2%;
+  }
+}
+
+// global styling
+h1, h2, h3, h4, h5, h6, button{
+  font-family:$headingFontFamily ;
+}
+p, input, textarea{ 
+  font-family: $mainFontFamily;
+  color:$body-dark
+}
+
+input, textarea, button{
+  &:focus{ outline: none; }
+} 
+
+a{
+  text-decoration: none;
+  color: inherit;
+}

@@ -1,0 +1,36 @@
+@import "../../styles/varibles.scss";
+$hero-height : 40rem;
+$item-height : 30rem;
+$item-padding: 5rem;
+
+.hero{
+    height: $hero-height;
+    position: relative;
+    
+
+    .containerClass{
+        height: $hero-height;
+        .sliderClass{
+            height: $hero-height;
+            .itemClass{
+                height: $item-height;
+                padding: $item-padding 0rem;
+                background-image:url("../../public/assets/hero-Slide-bg.jpg");
+                background-repeat: no-repeat;
+                background-position: 5vw 0vh; 
+                perspective: 2000;
+                backface-visibility: hidden;
+            }	
+        }
+    }
+    .dotListClass{
+        bottom: 1.2rem;
+        li{
+            button{
+                border-color: transparent;
+                filter: brightness(0.85);
+            }
+            
+        }
+    }
+}

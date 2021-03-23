@@ -1,0 +1,131 @@
+@import "../styles//varibles.scss";
+
+.header{
+  font-family : $headingFontFamily;
+    background-color: $light;
+    padding : 0.5rem 0;
+    box-shadow: 0 2px 28px 0 rgb(0 0 0 / 9%);
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    left: 0;
+  
+    .header_wrapper{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    a{
+      color: $dark;
+      text-decoration: none;
+      margin: 0 1rem;
+      &:hover{
+        color: $primary;
+      }
+      img{
+        width: 6rem;
+      }
+    }
+    
+  }
+  
+.footer {
+  .mainFooter{
+    background-color:$primary;
+    color: white;
+    padding : 4rem 0;
+    .mainFooterWrapper{
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      .address, .contacts, .social{
+        h4{
+          font-family: $mainFontFamily;
+          font-weight: 400;
+          margin-bottom: 1rem;
+        }
+        a{
+          font-weight: 200;
+          width: 100%;
+          margin-bottom: 0.66rem;
+        }
+        p{
+          font-weight: 200;
+          color: inherit;
+        }
+      }
+
+      .contactLink{
+        display: flex;
+        align-items: center;
+        &:hover{
+          text-decoration: underline;
+        }
+        svg{
+          color: $light;
+          font-size: 1.4rem;
+          margin-right: 0.33rem;
+          transition: $trans-250;
+        }
+      }
+
+      .address{
+        width: 25%;
+        iframe{
+          width: 100%;
+          height: auto;
+          border: none;
+          filter: hue-rotate(200deg);
+        }
+      }
+
+      .contacts{
+        
+        a{
+          span{
+            
+          }
+        }
+
+        .whatsapp{
+          display: flex;
+          align-items: center;
+          svg{
+            color: $light;
+            font-size: 1.6rem;
+            margin-right: 0.33rem;
+            transition: $trans-250;
+          }
+          &:hover{
+            svg{
+              color:#00E676;
+            }
+          }
+        }
+      }  
+
+      .social{
+        a{
+          svg{
+            font-size: 1.6rem;
+          }
+        }
+      }
+
+
+    }
+  }
+
+
+  .miniFooter{
+    background-color:$primary-dark;
+    text-align: center;
+    padding: 0.5rem;
+    p{
+      color: $off-light;
+      opacity: 90%;
+      font-weight: 200;
+    }
+  }
+}

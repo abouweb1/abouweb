@@ -1,0 +1,78 @@
+@import "../../styles/varibles.scss";
+
+.ConatctUs{
+  box-shadow: inset 0px 0px 3px 0px rgba(0 ,0 ,0 , 0.15);
+  padding: 4rem 0;
+}
+.title{
+  text-align: center;
+  margin: 0;
+  font-size: 2.4rem;
+}
+
+.subtitle{
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 300;
+}
+
+.ContacUsContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .form{
+    padding: 1rem;
+    width: 50%;
+    .formRow{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      input{
+        width:43%;
+      }
+    }
+    input, textarea{
+      display: block;
+      width: 95%;
+      height: 3rem;
+      padding: 0 2.5%;
+      margin: 0 0 1rem 0;
+      border-radius: 0.25rem;
+      line-height: normal;
+      background-color: initial;
+      border: 1px solid $light-grey;
+      transition: $trans-250;
+      box-shadow: unset!important;
+      font-weight: 300;
+      font-size: 1rem;
+      &:focus{
+        border: 1px solid $primary;
+      }
+    }
+    textarea{
+      padding: 2.5%;
+      height: 7rem;
+      resize: none;
+    }
+
+    button{
+    border: none;
+    border-radius: 3rem;
+    color: $light;
+    background-color: $primary;
+    transition: $trans-250;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.8rem 2rem;
+    cursor: pointer;
+    &:hover{background-color: $primary-dark;}
+
+    }
+  }
+
+  .vectorContainer{
+    padding: 1rem;
+    width: 50%;
+  }
+}

@@ -1,0 +1,13 @@
+@import "../../styles/varibles.scss";
+.PrimaryButton{
+    border: none;
+    border-radius: 3rem;
+    color: $light;
+    background-color: $primary;
+    transition: $trans-250;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.8rem 2rem;
+    cursor: pointer;
+    &:hover{background-color: $primary-dark;}
+}
