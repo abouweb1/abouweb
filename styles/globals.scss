@@ -55,3 +55,18 @@ a{
   text-decoration: none;
   color: inherit;
 }
+
+.image-gallery-svg{
+  // to edit "react-image-gallery" arrow styles
+  width: 2rem !important;
+  height: auto !important;
+}
+
+// to edit "react-image-gallery" bullet styles
+.image-gallery-bullets .image-gallery-bullet {
+  box-shadow: none!important;
+  background-color: $mid-grey !important;
+}
+.image-gallery-bullets .image-gallery-bullet.active{
+  background-color: $dark !important;
+}

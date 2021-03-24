@@ -27,7 +27,12 @@ const SingleProductSection = (props) => {
                         :
                         <ImageGallery
                             items={images}
-                            thumbnailPosition="left"
+                            showThumbnails={false}
+                            showPlayButton={false}
+                            showNav={true}
+                            showBullets={true}
+                            showFullscreenButton={false}
+                            useBrowserFullscreen={false}
                         />
                     }
                 </div>

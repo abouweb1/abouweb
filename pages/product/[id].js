@@ -40,7 +40,7 @@ function product(props) {
 
 export async function getServerSideProps(context) {
   const id = context.params.id;
-  console.log(context);
+  // console.log(context);
   const productsList = context.locale === "en" ? Products.en_products : Products.ar_products;
   const singleProduct = productsList[id];
 
