@@ -29,21 +29,21 @@ body {
 }
 
 .container{
-  width: 1280px;
+  width: 1270px;
   margin: 0% auto;
   overflow: hidden;
   @media (max-width:1400px) {
-      width: 96%;
-      margin: 0px 2%;
+      width: 90%;
+      margin: 0px 5%;
   }
 }
 
 // global styling
 h1, h2, h3, h4, h5, h6, button{
-  font-family:$headingFontFamily ;
+  // font-family:$headingFontFamily ;
 }
 p, input, textarea{ 
-  font-family: $mainFontFamily;
+  // font-family: $mainFontFamily;
   color:$body-dark
 }
 

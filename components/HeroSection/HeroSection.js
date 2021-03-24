@@ -1,7 +1,10 @@
+import { useRouter } from "next/router"
 import styles from "./HeroSection.module.scss";
 import HeroSlide from "./HeroSlide";
 import Carousel from "react-multi-carousel";
+import Products from "../../DummyData/Products";
 import "react-multi-carousel/lib/styles.css";
+
 
 const responsive = {
   superLargeDesktop: {
@@ -24,26 +27,17 @@ const responsive = {
 };
 
 
-const products = [
-  {imgName:"yg2",name:"Product 1 Name"},
-  {imgName:"wg1",name:"Product 2 Name"},
-  {imgName:"tl4",name:"Product 3 Name"},
-  {imgName:"tm8",name:"Product 4 Name"},
-  {imgName:"ts3",name:"Product 5 Name"},
-  {imgName:"cc1",name:"Product 6 Name"},
-  {imgName:"pc1",name:"Product 7 Name"},
-  {imgName:"ic1",name:"Product 8 Name"},
-  {imgName:"mu1",name:"Product 9 Name"},
-];
+
 const HeroSection = () => {
+  const productsList = useRouter().locale === "en" ? Products.en_products : Products.ar_products;
   return (
-    <section className={styles.hero}>
+    <section id={"#homeHeroSection"} className={styles.hero}>
       <Carousel
         swipeable
         draggable
         showDots
         responsive={responsive}
-         // means to render carousel on server-side.
+        // means to render carousel on server-side.
         infinite={true}
         autoPlay
         autoPlaySpeed={5000}
@@ -53,23 +47,24 @@ const HeroSection = () => {
         arrows={true}
         containerClass={styles.containerClass}
         sliderClass={styles.sliderClass}
-        itemClass={styles.itemClass}	
-        dotListClass={styles.dotListClass}	
+        itemClass={styles.itemClass}
+        dotListClass={styles.dotListClass}
       >
         {
-          products.map((product, idx)=>{
-            return(
+          productsList.map((product, idx) => {
+            return (
               <HeroSlide
+                id={idx}
                 key={idx}
                 imgSrc={`/assets/products/${product.imgName}.jpg`}
                 name={product.name}
-                description="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                description={product.description}
               />
             )
           })
         }
-        
-        
+
+
       </Carousel>
     </section>
   );

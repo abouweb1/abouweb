@@ -5,13 +5,12 @@ import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 
 import '../styles/globals.scss'
+import "react-image-gallery/styles/scss/image-gallery.scss";
 
 function MyApp({ Component, pageProps }) {
   
   const [lang, setLang] = useState("en")
-  useEffect(()=>{
-    document.documentElement.lang = lang
-  }, [lang])
+  
 
   return (
     <div className={"layout"}>
@@ -35,8 +34,9 @@ function MyApp({ Component, pageProps }) {
         <meta name="theme-color" content="#ffffff"/>
         <link rel="preconnect" href="https://fonts.gstatic.com"/>
         <link rel="preconnect" href="https://fonts.gstatic.com"/>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"/>
-        <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/>
+        {/* <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"/> */}
+        {/* <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/> */}
+        <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet"/>
       </Head>
       <Header/>
       <main className="main">

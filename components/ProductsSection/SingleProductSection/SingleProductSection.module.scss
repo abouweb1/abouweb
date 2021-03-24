@@ -1,4 +1,4 @@
-@import "../../styles/varibles.scss";
+@import "../../../styles/varibles.scss";
 .productSection{
     
     &:nth-child(odd){
@@ -31,7 +31,7 @@
         margin: 2rem 0rem;
         img{
             max-width: 100%;
-            max-height: 30rem;
+            max-height: 30rem !important;
             border-radius: 0.25em;
         }
     }
@@ -64,7 +64,6 @@
                 align-items: center;
                 svg{
                     font-size: 1.1rem;
-                    margin-right: 0.3rem;
                     color: $primary;
                 }
                 margin-bottom: 0.85rem;
