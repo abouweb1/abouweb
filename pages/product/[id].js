@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import Layout from "../../layout/Layout";
 import SingleProductSection from '../../components/ProductsSection/SingleProductSection/SingleProductSection'
 import ConatctUs from '../../components/ConatctUs/ConatctUs'
 import Products from "../../DummyData/Products";
@@ -29,11 +30,13 @@ function product(props) {
         <meta property="twitter:description" content={props.singleProduct.description} />
         <meta property="twitter:image" content={`/assets/products/${props.singleProduct.imgName}.jpg`} />
       </Head>
-      <SingleProductSection
-        id={props.id}
-        {...props.singleProduct}
-      />
-      <ConatctUs />
+      <Layout>
+        <SingleProductSection
+          id={props.id}
+          {...props.singleProduct}
+        />
+        <ConatctUs />
+      </Layout>
     </>
   )
 }

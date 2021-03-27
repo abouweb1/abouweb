@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Layout from "../layout/Layout";
 import HeroSection from '../components/HeroSection/HeroSection'
 import ConatctUs from '../components/ConatctUs/ConatctUs'
 import ProductsSection from '../components/ProductsSection/ProductsSection'
@@ -24,9 +25,11 @@ function Home(props) {
         <meta property="twitter:image" content="/assets/logo-seo.png"/>
 
       </Head>
+      <Layout>
         <HeroSection/>
         <ProductsSection/>
         <ConatctUs/>
+      </Layout>
     </>
   )
 }
