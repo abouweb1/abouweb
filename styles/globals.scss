@@ -56,17 +56,21 @@ a{
   color: inherit;
 }
 
+// react-image-gallery" styles OverRide
+
 .image-gallery-svg{
   // to edit "react-image-gallery" arrow styles
   width: 2rem !important;
   height: auto !important;
 }
 
-// to edit "react-image-gallery" bullet styles
 .image-gallery-bullets .image-gallery-bullet {
+  // to edit "react-image-gallery" bullet style
   box-shadow: none!important;
   background-color: $mid-grey !important;
 }
+
 .image-gallery-bullets .image-gallery-bullet.active{
+  // to edit "react-image-gallery" active bullet style
   background-color: $dark !important;
 }

@@ -1,25 +1,20 @@
 @import "../../styles/varibles.scss";
-$hero-height : 40rem;
-$item-height : 30rem;
-$item-padding: 5rem;
 
 .hero{
-    height: $hero-height;
     position: relative;
-    
-
     .containerClass{
-        height: $hero-height;
+        background-image:url("../../public/assets/hero-Slide-bg.jpg");
+        background-repeat: no-repeat;
+        background-position: 5vw 0vh; 
+        perspective: 2000;
+        backface-visibility: hidden;
         .sliderClass{
-            height: $hero-height;
+            align-items: center;
             .itemClass{
-                height: $item-height;
-                padding: $item-padding 0rem;
-                background-image:url("../../public/assets/hero-Slide-bg.jpg");
-                background-repeat: no-repeat;
-                background-position: 5vw 0vh; 
-                perspective: 2000;
-                backface-visibility: hidden;
+                padding: 5rem 0rem 5rem 0rem;
+                @media (max-width : 768px) {
+                    padding: 1rem 0rem 5rem 0rem;
+                }             
             }	
         }
     }

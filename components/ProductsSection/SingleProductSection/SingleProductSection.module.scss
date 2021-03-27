@@ -1,10 +1,9 @@
 @import "../../../styles/varibles.scss";
 
 $image-hight-lg:30rem;
-$image-hight-sm:22rem;
+$image-hight-sm:20rem;
 
 .productSection{
-    
     &:nth-child(odd){
         background-color: $off-light;
     };
@@ -12,33 +11,30 @@ $image-hight-sm:22rem;
         box-shadow: inset 0px 0px 3px 0px rgba(0 ,0 ,0 , 0.15);
         .productSectionContainer{
             flex-direction: row-reverse
-            
         }
     };
 
-    min-height: $image-hight-lg;
     padding: 2rem 0rem;
     display: flex;
     align-items: center;
 }
 .productSectionContainer{
-    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     
     .imgContainer{
+        min-height: $image-hight-lg !important;
         width: 47.5%;
-        min-height: $image-hight-lg;
         display: flex;
         justify-content: center;
         align-items: center;
         margin: 2rem 0rem;
 
-        
         img{
-            max-width: 100%;
+            // important tp over Right the "react-image-gallery" styiling.
             max-height: $image-hight-lg !important;
+            max-width: 100%;
             border-radius: 0.25em;
         }
     }
@@ -51,7 +47,7 @@ $image-hight-sm:22rem;
             
         }
         .title{
-            font-size: 3.2rem;
+            font-size: 2.6rem;
             margin: 0 0 1rem 0;
         }
         .description{
@@ -90,14 +86,14 @@ $image-hight-sm:22rem;
     }
 
     @media (max-width : 768px) {
-        // min-height: $image-hight-sm;
         flex-direction: column !important;
         .imgContainer{
-            // min-height: $image-hight-sm;
-            margin: 0rem;
+            min-height: $image-hight-sm !important;
             width: 100%;
+            margin: 0rem;
             img{
-                // max-height: $image-hight-sm;
+                // important tp over Right the "react-image-gallery" styiling.
+                max-height: $image-hight-sm !important;
             }
         }
         .info{
