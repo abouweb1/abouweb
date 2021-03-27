@@ -55,10 +55,12 @@
       display        : flex;
       justify-content: space-around;
       align-items    : flex-start;
+     
 
       .address,
       .contacts,
       .social {
+        width: 25%;
         h4 {
           font-family  : $mainFontFamily;
           font-weight  : 400;
@@ -80,6 +82,9 @@
       .contactLink {
         display    : flex;
         align-items: center;
+        @media (max-width : 768px) {
+          justify-content: center;
+        }
 
         &:hover {
           text-decoration: underline;
@@ -93,7 +98,7 @@
       }
 
       .address {
-        width: 25%;
+        
 
         iframe {
           width : 100%;
@@ -104,12 +109,12 @@
       }
 
       .contacts {
-
-
-
         .whatsapp {
           display    : flex;
           align-items: center;
+          @media (max-width : 768px) {
+            justify-content: center;
+          }
 
           svg {
             color     : $light;
@@ -135,7 +140,15 @@
         }
       }
 
-
+      @media (max-width : 768px) {
+        flex-direction: column;
+        .address,
+        .contacts,
+        .social {
+          width: 100%;
+          text-align: center;
+        }
+      }
     }
   }
 

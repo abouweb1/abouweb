@@ -13,10 +13,7 @@ const HeroSlide = (props) => {
             </div>
             <div 
               className={styles.info}
-              style={{
-                direction:useRouter().locale==="ar" && "rtl",
-                textAlign:useRouter().locale==="ar" && "right",
-              }}
+            dir="auto"
             >
                 <h1>{props.name}</h1>
                 <p>{props.description}</p>

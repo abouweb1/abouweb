@@ -39,10 +39,7 @@ const SingleProductSection = (props) => {
                 </div>
                 <div
                     className={styles.info}
-                    style={{
-                        direction: router.locale === "ar" && "rtl",
-                        textAlign: router.locale === "ar" && "right",
-                    }}
+                    dir="auto"
                 >
 
                     <p className={styles.superTitle}>{props.superTitle}</p>
