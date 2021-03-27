@@ -1,4 +1,5 @@
 import { useState } from "react"
+import PrimaryButton from "../Button/PrimaryButton";
 import styles from "./ContactUs.module.scss"
 import Lottie from 'react-lottie';
 import animationData from './support-team-animation.json';
@@ -42,14 +43,20 @@ const ConatctUs = () => {
                         />
                     </div>
                     <form className={styles.form}>
-                        <div className={styles.formRow}>
+                        <div className={styles.formSharedRow}>
                             <input type="text" name="name" required placeholder="Your Name" value={form.name} onChange={inputChangeHandler} />
                             <input type="text" name="email" placeholder="Your Email" value={form.email} onChange={inputChangeHandler} />
                         </div>
-                        <input type="text" name="phone" placeholder="Your Phone" value={form.phone} onChange={inputChangeHandler} />
-                        <input type="text" name="subject" placeholder="Your Subject" value={form.subject} onChange={inputChangeHandler} />
-                        <textarea name="message" required value={form.message} placeholder="Your Message" onChange={inputChangeHandler} />
-                        <button>Send Message</button>
+                        <div className={styles.formRow}>
+                            <input type="text" name="phone" placeholder="Your Phone" value={form.phone} onChange={inputChangeHandler} />
+                        </div>
+                        <div className={styles.formRow}>
+                            <input type="text" name="subject" placeholder="Your Subject" value={form.subject} onChange={inputChangeHandler} />
+                        </div>
+                        <div className={styles.formRow}>
+                            <textarea name="message" required value={form.message} placeholder="Your Message" onChange={inputChangeHandler} />
+                        </div>
+                        <PrimaryButton>Send Message</PrimaryButton>
                     </form>
 
                 </div>
