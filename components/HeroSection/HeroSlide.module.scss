@@ -29,10 +29,13 @@ $image-hight-sm:20rem;
             margin: 0 0 1rem 0;
         }
         p{
-            line-height: 1.6;
             margin-bottom: 1.5rem;
             font-weight: 400;
-            font-size: 0.95rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            @media (max-width : 768px) {
+                line-height: 1.25rem;
+            }
         }
         @media (max-width : 768px) {
             h1{
@@ -44,7 +47,7 @@ $image-hight-sm:20rem;
     @media (max-width : 768px) {
         flex-direction: column;
         .imgContainer{
-            min-height: $image-hight-lg !important;
+            min-height: $image-hight-sm !important;
             width: 100%;
             img{
                 max-height: $image-hight-sm;
