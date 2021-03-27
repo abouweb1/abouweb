@@ -56,6 +56,15 @@ a{
   color: inherit;
 }
 
+
+
+.hiddenInMobile{
+  @media (max-width : 768px) {
+    display: none !important;
+  }
+  
+}
+
 // react-image-gallery" styles OverRide
 
 .image-gallery-svg{

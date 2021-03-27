@@ -36,7 +36,7 @@ const Header = () => {
           {router.pathname === "/" ?
             <>
               <a id="homeHeroSection" onClick={windowScroll}>Home</a>
-              <a id="products" onClick={windowScroll}>Products</a>
+              <a id="products" className="hiddenInMobile" onClick={windowScroll}>Products</a>
             </>
             :
             <Link href="/"><a>Home</a></Link>
