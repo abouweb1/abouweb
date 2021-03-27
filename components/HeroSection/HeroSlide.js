@@ -19,7 +19,7 @@ const HeroSlide = (props) => {
                 <p>{props.description}</p>
                 <Link href={`/product/${props.id}`} locale={router.locale === "ar"? "ar" : "en"}>
                     <a>
-                        <PrimaryButton>Check Now</PrimaryButton>
+                        <PrimaryButton>{router.locale === "ar"? "المزيد" : "Check Now"}</PrimaryButton>
                     </a>
                 </Link>
             </div>

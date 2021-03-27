@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useRouter } from "next/router";
 import PrimaryButton from "../Button/PrimaryButton";
 import styles from "./ContactUs.module.scss"
 import Lottie from 'react-lottie';
@@ -14,7 +15,7 @@ const defaultOptions = {
 };
 
 const ConatctUs = () => {
-
+    const router = useRouter();
     const [form, setForm] = useState({
         name: "",
         email: "",
@@ -31,9 +32,9 @@ const ConatctUs = () => {
     }
     return (
         <section id={"#contactUs"} className={styles.ConatctUs}>
-            <div className="container">
-                <h2 className={styles.title}>Get In Touch With Us</h2>
-                <p className={styles.subtitle}>Have any questions? We'd love to hear from you.</p>
+            <div className="container" dir="auto">
+                <h2 className={styles.title}>{router.locale === "ar" ? "تواصل معنا" : "Get In Touch With Us"}</h2>
+                <p className={styles.subtitle}>{router.locale === "ar" ? "لديك أي أسئلة؟ نحب أن نسمع منك." : "Have any questions? We'd love to hear from you."}</p>
                 <div className={styles.ContacUsContainer}>
                     <   div className={styles.vectorContainer}>
                         <Lottie
@@ -44,19 +45,19 @@ const ConatctUs = () => {
                     </div>
                     <form className={styles.form}>
                         <div className={styles.formSharedRow}>
-                            <input type="text" name="name" required placeholder="Your Name" value={form.name} onChange={inputChangeHandler} />
-                            <input type="text" name="email" placeholder="Your Email" value={form.email} onChange={inputChangeHandler} />
+                            <input type="text" name="name" required placeholder={router.locale === "ar" ? "إسمك" : "Your Name"} value={form.name} onChange={inputChangeHandler} />
+                            <input type="text" name="email" placeholder={router.locale === "ar" ? "بريدك الإلكترونى" : "Your Email"} value={form.email} onChange={inputChangeHandler} />
                         </div>
                         <div className={styles.formRow}>
-                            <input type="text" name="phone" placeholder="Your Phone" value={form.phone} onChange={inputChangeHandler} />
+                            <input type="text" name="phone" placeholder={router.locale === "ar" ? "رقم هاتفك" : "Your Phone Number"} value={form.phone} onChange={inputChangeHandler} />
                         </div>
                         <div className={styles.formRow}>
-                            <input type="text" name="subject" placeholder="Your Subject" value={form.subject} onChange={inputChangeHandler} />
+                            <input type="text" name="subject" placeholder={router.locale === "ar" ? "عنوان رسالتك" : "Your Subject"} value={form.subject} onChange={inputChangeHandler} />
                         </div>
                         <div className={styles.formRow}>
-                            <textarea name="message" required value={form.message} placeholder="Your Message" onChange={inputChangeHandler} />
+                            <textarea name="message" required value={form.message} placeholder={router.locale === "ar" ? "رسالتك" : "Your Message"} onChange={inputChangeHandler} />
                         </div>
-                        <PrimaryButton>Send Message</PrimaryButton>
+                        <PrimaryButton>{router.locale === "ar" ? "إرسال" : "Send"}</PrimaryButton>
                     </form>
 
                 </div>

@@ -194,7 +194,7 @@ export default {
             ]
           },
           {
-            imgName:"mu1",
+            imgName:"ic1",
             imgNames:["ic1"],
             name:"اسم المنتج الثامن",
             superTitle:"عنوان صغير",
@@ -206,7 +206,7 @@ export default {
             ]
           },
           {
-            imgName:"yg2",
+            imgName:"mu1",
             imgNames:["mu1"],
             name:"اسم المنتج التاسع",
             superTitle:"عنوان صغير",
