@@ -1,0 +1,35 @@
+@import "../../styles/varibles.scss";
+
+.adminForm{
+  form{
+    min-height:50vh;
+    padding: 3rem 0rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    input{
+        font-family: $mainFontFamily;
+        height: 3rem;
+        padding: 0 2.5%;
+        margin: 0 0 1rem 0;
+        border-radius: 0.25rem;
+        line-height: normal;
+        background-color: initial;
+        border: 1px solid $light-grey;
+        transition: $trans-250;
+        box-shadow: unset!important;
+        font-weight: 400;
+        font-size: 1.1rem;
+        &:focus{
+          border: 1px solid $primary;
+        }
+      }
+      p{
+        color: $error;
+      }
+      button{
+        width: fit-content;
+      }
+  }
+}
