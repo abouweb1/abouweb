@@ -15,6 +15,7 @@ export default {
         {
           imgName:"wg1",
           imgNames:["wg1", "wg2"],
+          name:"Product 2 Name",
           superTitle:"SuperTitle",
           description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           list:[
