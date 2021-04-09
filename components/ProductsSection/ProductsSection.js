@@ -37,6 +37,7 @@ const ProductsSection = () => {
       }
 
     }
+
     setTimeout(() => { setBase64ImgSrcList(srcList) }, 1000)
 
 
@@ -47,6 +48,7 @@ const ProductsSection = () => {
 
   return (
     <div id="#products">
+  
       {APIimgSrcList.map((el, index) => {
         if (el.productImage) {
           return (

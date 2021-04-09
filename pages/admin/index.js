@@ -7,24 +7,24 @@ import AdminTables from "../../components/Admin/AdminTables";
 const index = () => {
     const [isAdminFlag, setIsAdminFlag] = useState(false)
     const [formData, setFormData] = useState({
-        username: "",
-        password: ""
+        username: "abou",
+        password: "2021"
     })
 
     return (
         <>
-        <Head>
-            <title>Abou | Admin</title>
-        </Head>
-        <Layout >
-            <div>
-                {isAdminFlag ?
-                    <AdminTables />
-                    :
-                    <AdminForm formData={formData} setFormData={setFormData} setIsAdminFlag={setIsAdminFlag} />
-                }
-            </div>
-        </Layout>
+            <Head>
+                <title>Abou | Admin</title>
+            </Head>
+            <Layout >
+                <div>
+                    {isAdminFlag ?
+                        <AdminTables />
+                        :
+                        <AdminForm formData={formData} setFormData={setFormData} setIsAdminFlag={setIsAdminFlag} />
+                    }
+                </div>
+            </Layout>
         </>
     );
 };
