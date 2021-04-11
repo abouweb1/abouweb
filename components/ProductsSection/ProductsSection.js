@@ -49,7 +49,7 @@ const ProductsSection = () => {
   return (
     <div id="#products">
   
-      {APIimgSrcList.map((el, index) => {
+      {/* {APIimgSrcList.map((el, index) => {
         if (el.productImage) {
           return (
             <Base64Image
@@ -76,7 +76,7 @@ const ProductsSection = () => {
 
       <br />
 
-      <input type="file" multiple onChange={uploadHandler} />
+      <input type="file" multiple onChange={uploadHandler} /> */}
 
       {productsList.map((product, idx) => {
         return (
