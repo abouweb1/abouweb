@@ -53,6 +53,7 @@ const ProductsSection = () => {
         if (el.productImage) {
           return (
             <Base64Image
+              test="test"
               key={index}
               src={el.productImage}
               alt="Red dot"
