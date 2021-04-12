@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import requester from "../utilities/requester";
 import Layout from "../layout/Layout";
 import HeroSection from '../components/HeroSection/HeroSection'
 import ConatctUs from '../components/ConatctUs/ConatctUs'
@@ -26,12 +27,39 @@ function Home(props) {
 
       </Head>
       <Layout>
-        <HeroSection/>
-        <ProductsSection/>
+        <HeroSection products={props.products}/>
+        <ProductsSection products={props.products}/>
         <ConatctUs/>
       </Layout>
     </>
   )
+}
+
+
+export async function getServerSideProps(context) {
+
+  const product_en = await requester.get(`/products/activeProducts/en`).catch(()=>{});
+  const product_ar = await requester.get(`/products/activeProducts/ar`).catch(()=>{});
+
+  const products = {
+    en : product_en.data,
+    ar : product_ar.data
+  }; 
+  
+  if(products.en && products.ar){
+    return {
+      props: {products : products}, // will be passed to the page component as props
+    }
+  }
+  else{
+    return {
+      redirect: {
+        destination: '/404',
+        permanent: false,
+      }
+    }
+  }
+
 }
 
 

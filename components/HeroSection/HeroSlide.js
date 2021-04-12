@@ -9,13 +9,13 @@ const HeroSlide = (props) => {
     return (
         <div className={`${styles.slide} container`} >
             <div className={styles.imgContainer}>
-                <img src={props.imgSrc} draggable="false"/>
+                <img src={props.productImage} draggable="false"/>
             </div>
             <div 
               className={styles.info}
             dir="auto"
             >
-                <h1>{props.name}</h1>
+                <h1>{props.title}</h1>
                 <p>{props.description}</p>
                 <Link href={`/product/${props.id}`} locale={router.locale === "ar"? "ar" : "en"}>
                     <a>

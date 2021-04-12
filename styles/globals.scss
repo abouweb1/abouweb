@@ -72,6 +72,11 @@ a{
   width: 2rem !important;
   height: auto !important;
 }
+.image-gallery-slide{
+  &:focus{
+    outline: none;
+  }
+}
 
 .image-gallery-bullets .image-gallery-bullet {
   // to edit "react-image-gallery" bullet style

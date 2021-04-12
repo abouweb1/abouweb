@@ -1,39 +1,37 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import requester from "../../utilities/requester";
 import Layout from "../../layout/Layout";
 import SingleProductSection from '../../components/ProductsSection/SingleProductSection/SingleProductSection'
 import ConatctUs from '../../components/ConatctUs/ConatctUs'
-import Products from "../../DummyData/Products";
-
 
 
 function product(props) {
   const router = useRouter()
   const { id } = router.query
-  const productsList = useRouter().locale === "en" ? Products.en_products : Products.ar_products;
-  const singleProduct = productsList[id]
+  const product = useRouter().locale === "en" ? props.product.en : props.product.ar;
   return (
     <>
       <Head>
-        <title>Abou | {props.singleProduct.name}</title>
-        <meta name="description" content={props.singleProduct.description} />
+        <title>Abou | {product.title}</title>
+        <meta name="description" content={product.description} />
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https:/abouweb-abouweb1.vercel.app/product/${props.id}`} />
-        <meta property="og:description" content={props.singleProduct.description} />
-        <meta property="og:image" content={`/assets/products/${props.singleProduct.imgName}.jpg`} />
+        <meta property="og:url" content={`https:/abouweb-abouweb1.vercel.app/product/${id}`} />
+        <meta property="og:description" content={product.description} />
+        <meta property="og:image" content={`/assets/products/${product.productImage}.jpg`} />
 
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={`https:/abouweb-abouweb1.vercel.app/product/${props.id}`} />
-        <meta property="twitter:description" content={props.singleProduct.description} />
-        <meta property="twitter:image" content={`/assets/products/${props.singleProduct.imgName}.jpg`} />
+        <meta property="twitter:url" content={`https:/abouweb-abouweb1.vercel.app/product/${id}`} />
+        <meta property="twitter:description" content={product.description} />
+        <meta property="twitter:image" content={`/assets/products/${product.productImage}.jpg`} />
       </Head>
       <Layout>
         <SingleProductSection
-          id={props.id}
-          {...props.singleProduct}
+          id={product.productId}
+          {...product}
         />
         <ConatctUs />
       </Layout>
@@ -43,16 +41,21 @@ function product(props) {
 
 export async function getServerSideProps(context) {
   const id = context.params.id;
-  // console.log(context);
-  const productsList = context.locale === "en" ? Products.en_products : Products.ar_products;
-  const singleProduct = productsList[id];
+  
+  const product_en = await requester.get(`/products/productById/en/${id}`).catch(()=>{});
+  const product_ar = await requester.get(`/products/productById/ar/${id}`).catch(()=>{});
 
-  if (singleProduct) {
+  const product = {
+    en : product_en.data[0],
+    ar : product_ar.data[0]
+  }; 
+  
+  if(product.en && product.ar){
     return {
-      props: { singleProduct: singleProduct }, // will be passed to the page component as props
+      props: {product : product}, // will be passed to the page component as props
     }
   }
-  else {
+  else{
     return {
       redirect: {
         destination: '/404',
@@ -60,7 +63,6 @@ export async function getServerSideProps(context) {
       }
     }
   }
-
 }
 
 export default product;

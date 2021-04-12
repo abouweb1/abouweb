@@ -28,8 +28,8 @@ const responsive = {
 
 
 
-const HeroSection = () => {
-  const productsList = useRouter().locale === "en" ? Products.en_products : Products.ar_products;
+const HeroSection = (props) => {
+  const productsList = useRouter().locale === "en" ? props.products.en : props.products.ar;
   return (
     <section id={"#homeHeroSection"} className={styles.hero}>
       <Carousel
@@ -51,13 +51,13 @@ const HeroSection = () => {
         dotListClass={styles.dotListClass}
       >
         {
-          productsList.map((product, idx) => {
+          productsList.map((product) => {
             return (
               <HeroSlide
-                id={idx}
-                key={idx}
-                imgSrc={`/assets/products/${product.imgName}.jpg`}
-                name={product.name}
+                id={product.productId}
+                key={product.productId}
+                productImage={product.productImage}
+                title={product.title}
                 description={product.description}
               />
             )

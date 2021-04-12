@@ -9,14 +9,15 @@ import styles from "./SingleProductSection.module.scss";
 const SingleProductSection = (props) => {
     const router = useRouter();
 
-    const images = props.imgNames.map(imgName => {
+    const images = props.gallery.map(img => {
         return(
             {
-                original  : `/assets/products/${imgName}.jpg`,
-                thumbnail : `/assets/products/${imgName}.jpg`
+                original  : img.imageUrl,
+                thumbnail : img.imageUrl
             }
         )
     })
+
     return (
         <section className={styles.productSection}>
 
@@ -24,7 +25,7 @@ const SingleProductSection = (props) => {
                 <div className={styles.imgContainer}>
                     {/* in home page we show one image, but in product page we show all the product iamges in slider */}
                     {router.pathname === "/" ?
-                        <img src={`/assets/products/${props.imgName}.jpg`} />
+                        <img src={props.productImage} alt={props.title} />
                         :
                         <ImageGallery
                             items={images}
@@ -34,6 +35,7 @@ const SingleProductSection = (props) => {
                             showBullets={true}
                             showFullscreenButton={false}
                             useBrowserFullscreen={false}
+                            
                         />
                     }
                 </div>
@@ -43,14 +45,16 @@ const SingleProductSection = (props) => {
                 >
 
                     <p className={styles.superTitle}>{props.superTitle}</p>
-                    <h1 className={styles.title}>{props.name}</h1>
+                    <h1 className={styles.title}>{props.title}</h1>
                     <p className={styles.description}>{props.description}</p>
 
                     <ul>
-                        {props.list.map((listItem, idx) => {
-                            return (
-                                <li key={idx}><IoCheckmark />&nbsp;{listItem}</li>
-                            )
+                        {props.bulletList.map((listItem, idx) => {
+                            if(!!listItem){
+                                return (
+                                    <li key={idx}><IoCheckmark />&nbsp;{listItem}</li>
+                                )
+                            }
                         })}
                     </ul>
 
