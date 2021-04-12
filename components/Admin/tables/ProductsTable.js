@@ -86,7 +86,14 @@ const ProductsTable = () => {
         
         Object.keys(e.data).forEach(key => {
             if(key !== "gallery"){
-                productFormData.append(key, e.data[key])
+                if(Array.isArray(e.data[key])){
+                    e.data[key].forEach(item=>{
+                        productFormData.append(key, item)
+                    })
+                }
+                else{
+                    productFormData.append(key, e.data[key])
+                }
             }
         });
         
@@ -127,7 +134,14 @@ const ProductsTable = () => {
         
         Object.keys(e.data).forEach(key => {
             if(key !== "gallery"){
-                productFormData.append(key, e.data[key]);
+                if(Array.isArray(e.data[key])){
+                    e.data[key].forEach(item=>{
+                        productFormData.append(key, item)
+                    })
+                }
+                else{
+                    productFormData.append(key, e.data[key])
+                }
             }
         });
 
