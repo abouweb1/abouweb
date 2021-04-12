@@ -25,7 +25,7 @@ const SingleProductSection = (props) => {
                 <div className={styles.imgContainer}>
                     {/* in home page we show one image, but in product page we show all the product iamges in slider */}
                     {router.pathname === "/" ?
-                        <img src={props.productImage} alt={props.title} />
+                        <img src={props.productImage} alt={props.title} loading="lazy" />
                         :
                         <ImageGallery
                             items={images}
