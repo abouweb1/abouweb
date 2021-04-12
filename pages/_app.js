@@ -43,11 +43,7 @@ function MyApp({ Component, pageProps }) {
         {/* <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"/> */}
         <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet"/>
       </Head>
-      {/* <Header/> */}
-      {/* <main className="main"> */}
         <Component {...pageProps} lang={lang} setLang={setLang}/>
-      {/* </main> */}
-      {/* <Footer/> */}
     </div>
   )
 }
