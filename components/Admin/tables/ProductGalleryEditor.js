@@ -11,6 +11,7 @@ export default function ProductGalleryEditor(props) {
 
     useEffect(() => {
         console.log("ProductGalleryEditor", props);
+        props.data.setValue(null);
     }, [])
 
     const errorHandler = (e, str="Error Occurred") => {
