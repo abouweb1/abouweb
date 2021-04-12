@@ -20,7 +20,7 @@ function product(props) {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`https:/abouweb-abouweb1.vercel.app/product/${id}`} />
         <meta property="og:description" content={product.description} />
-        <meta property="og:image" content={`/assets/products/${product.productImage}.jpg`} />
+        <meta property="og:image" content={`${product.productImage}`} />
 
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
