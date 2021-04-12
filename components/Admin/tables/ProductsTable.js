@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import requester from "../../../utilities/requester";
 import DataGrid, {
     Column,
-    MasterDetail,
     Editing,
     Popup,
     Position,
@@ -215,12 +214,9 @@ const ProductsTable = () => {
                         <Position my="center" at="center" of={window} />
                     </Popup>
 
-
                     <Form>
                         <Item colSpan="2" dataField="title" alignment={"center"} />
-
                         {/* ---------------------------------------------------------Hidden Items------------------------------------- */}
-
                         <Item colSpan="2" dataField="title_ar" />
                         <Item colSpan="2" dataField="superTitle" />
                         <Item colSpan="2" dataField="superTitle_ar" />
@@ -234,31 +230,26 @@ const ProductsTable = () => {
                         <Item colSpan="2" dataField="productId" />
                         <Item colSpan="2" dataField="productImage" />
                         <Item colSpan="2" dataField="gallery" />
-
-
                     </Form>
 
                 </Editing>
 
                 <Column dataField="title" alignment={"center"} />
                 <Column dataField="title_ar" alignment={"center"} />
-                <Column dataField="superTitle" alignment={"center"} />
-                <Column dataField="superTitle_ar" alignment={"center"} />
-                <Column dataField="subtitle" alignment={"center"} />
-                <Column dataField="subtitle_ar" alignment={"center"} />
-
+                <Column dataField="active" alignment={"center"} dataType='boolean' />
+                <Column dataField="productId" alignment={"center"} />
                 {/* ---------------------------------------------------------Hidden Columns------------------------------------- */}
-
+                <Column visible={false} dataField="superTitle" alignment={"center"} />
+                <Column visible={false} dataField="superTitle_ar" alignment={"center"} />
+                <Column visible={false} dataField="subtitle" alignment={"center"} />
+                <Column visible={false} dataField="subtitle_ar" alignment={"center"} />
                 <Column visible={false} dataField="description" alignment={"center"} />
                 <Column visible={false} dataField="description_ar" alignment={"center"} />
                 <Column visible={false} dataField="bulletList" alignment={"center"} editCellComponent={BulletListEditor} />
                 <Column visible={false} dataField="bulletList_ar" alignment={"center"} editCellComponent={BulletListEditor} />
                 <Column visible={false} dataField="productImage" alignment={"center"} editCellComponent={ProductImageEditor}  />
                 <Column visible={false} dataField="gallery" alignment={"center"} editCellComponent={ProductGalleryEditor} />
-
                 <Column visible={false} dataField="_id" alignment={"center"} />
-                <Column visible={false} dataField="productId" alignment={"center"} />
-                <Column visible={false} dataField="active" alignment={"center"} dataType='boolean' />
 
 
                 <Column dataField="heroSectionItem" caption="Hero Product" alignment={"center"} cellRender={(rowData) => {
@@ -280,10 +271,6 @@ const ProductsTable = () => {
                 }}
                 />
                 <Column type="buttons" width={110} buttons={['edit', 'delete']} />
-                <MasterDetail
-                    enabled={true}
-                    component={DetailTemplate}
-                />
                 <Export enabled={true} />
             </DataGrid>
         </div>
