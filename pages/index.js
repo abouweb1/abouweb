@@ -27,7 +27,7 @@ function Home(props) {
 
       </Head>
       <Layout>
-        <HeroSection products={props.products}/>
+        <HeroSection products={props.heroProducts}/>
         <ProductsSection products={props.products}/>
         <ConatctUs/>
       </Layout>
@@ -40,25 +40,41 @@ export async function getServerSideProps(context) {
 
   const product_en = await requester.get(`/products/activeProducts/en`).catch(()=>{});
   const product_ar = await requester.get(`/products/activeProducts/ar`).catch(()=>{});
+  const hero_product_ar = await requester.get(`/products/getHeroSecProducts/ar`).catch(()=>{});
+  const hero_product_en = await requester.get(`/products/getHeroSecProducts/en`).catch(()=>{});
 
   const products = {
     en : product_en.data,
     ar : product_ar.data
   }; 
+
+  const heroProducts = {
+    en : hero_product_en.data,
+    ar : hero_product_ar.data
+  }; 
+
+  let data = {};
   
   if(products.en && products.ar){
-    return {
-      props: {products : products}, // will be passed to the page component as props
-    }
+    data.products = products
   }
-  else{
-    return {
-      redirect: {
-        destination: '/404',
-        permanent: false,
-      }
-    }
+
+  if(heroProducts.en && heroProducts.ar){
+    data.heroProducts = heroProducts;
   }
+
+  return {
+    props: {...data}, // will be passed to the page component as props
+  }
+
+  // else{
+  //   return {
+  //     redirect: {
+  //       destination: '/404',
+  //       permanent: false,
+  //     }
+  //   }
+  // }
 
 }
 
