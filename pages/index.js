@@ -37,44 +37,39 @@ function Home(props) {
 
 
 export async function getServerSideProps(context) {
-
+  console.log("initiate data requests");
   const product_en = await requester.get(`/products/activeProducts/en`).catch(() => { });
   const product_ar = await requester.get(`/products/activeProducts/ar`).catch(() => { });
   const hero_product_ar = await requester.get(`/products/getHeroSecProducts/ar`).catch(() => { });
   const hero_product_en = await requester.get(`/products/getHeroSecProducts/en`).catch(() => { });
 
-  const products = {
-    en: product_en.data,
-    ar: product_ar.data
-  };
+  if ( product_en && product_ar && hero_product_en && hero_product_ar ) {
+    console.log("all data fetched successfully");
+    let data = {
+      products:{
+        en: product_en.data,
+        ar: product_ar.data
+      },
+      heroProducts:{
+        en: hero_product_en.data,
+        ar: hero_product_ar.data
+      }
+    };
 
-  const heroProducts = {
-    en: hero_product_en.data,
-    ar: hero_product_ar.data
-  };
+    return {
+      props: { ...data }, // will be passed to the page component as props
+    }
 
-  let data = {};
-
-  if (products.en && products.ar) {
-    data.products = products
   }
-
-  if (heroProducts.en && heroProducts.ar) {
-    data.heroProducts = heroProducts;
+  else{
+    console.log("failed to fetch data, redirect to '/404'");
+    return {
+      redirect: {
+        destination: '/404',
+        permanent: false,
+      }
+    }
   }
-
-  return {
-    props: { ...data }, // will be passed to the page component as props
-  }
-
-  // else{
-  //   return {
-  //     redirect: {
-  //       destination: '/404',
-  //       permanent: false,
-  //     }
-  //   }
-  // }
 
 }
 
