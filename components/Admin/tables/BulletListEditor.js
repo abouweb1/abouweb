@@ -3,7 +3,7 @@ import { Button, TextBox } from "devextreme-react/text-box";
 import List from 'devextreme-react/list';
 
 const BulletListEditor = (props) => {
-    console.log(props);
+    // console.log(props);
     useEffect(() => {
         setList(props?.data?.data[props?.data?.item?.dataField] || []);
     }, [])

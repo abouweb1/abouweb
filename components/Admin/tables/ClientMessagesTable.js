@@ -64,9 +64,17 @@ const ClientMessagesTable = () => {
             setViewedRecords(newdata.filter(record => record.replied));
         }).catch(errorHandler)
     }
+    
     const UpdatedMessageState = (e) => {
-        console.log(e.row.data._id);
+        console.log(e.row.data);
         requester.patch(`/messages/replied/${e.row.data._id}`).then(() => {
+            fetchMessages();
+        }).catch(errorHandler)
+    }
+
+    const deleteMessage = (e) => {
+        console.log("delete message ", e.row.data);
+        requester.delete(`/messages/deleteMessage/${e.row.data._id}`).then(() => {
             fetchMessages();
         }).catch(errorHandler)
     }
@@ -110,12 +118,20 @@ const ClientMessagesTable = () => {
                 <Column dataField="phone" alignment={"center"} />
                 <Column dataField="subject" alignment={"center"} />
                 <Column dataField="time" alignment={"center"} dataType='datetime' />
-                <Column caption='Mark as read' type="buttons" width={110} buttons={[{
-                    hint: 'mark as read',
-                    icon: "check",
-                    visible: !replied,
-                    onClick: UpdatedMessageState,
-                }, 'delete']} />
+                <Column caption='Mark as read' type="buttons" width={110} buttons={[
+                    {
+                        hint: 'mark as read',
+                        icon: "check",
+                        visible: !replied,
+                        onClick: UpdatedMessageState,
+                    },
+                    {
+                        hint: 'Delete',
+                        icon: "trash",
+                        visible: true,
+                        onClick: deleteMessage,
+                    }
+                ]} />
                 <MasterDetail
                     enabled={true}
                     component={DetailTemplate}
