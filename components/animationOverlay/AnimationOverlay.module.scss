@@ -1,0 +1,34 @@
+.bodyOverlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    height: 100vh;
+    width: 100%;
+    background-color: #000000db;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .loader {
+        border-radius: 50%;
+        border: 1rem solid #ffffff00;
+        border-top: 1rem solid #0F6DAE;
+        border-right: 1rem solid #0F6DAE;
+        width: 7rem;
+        height: 7rem;
+        -webkit-animation: spin 0.75s linear infinite; /* Safari */
+        animation: spin 0.75s linear infinite;
+      }
+      
+      
+      @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+}
