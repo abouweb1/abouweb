@@ -7,8 +7,8 @@ import AdminTables from "../../components/Admin/AdminTables";
 const index = () => {
     const [isAdminFlag, setIsAdminFlag] = useState(false)
     const [formData, setFormData] = useState({
-        username: "abou",
-        password: "2021"
+        username: "",
+        password: ""
     })
 
     return (
