@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { DisplayLoadingOverlayHandler } from "../../../pages/Contexts";
+import { toast } from 'react-toastify';
 import requester from "../../../utilities/requester";
 import DataGrid, {
     Column,
@@ -24,12 +26,14 @@ import 'devextreme-react/text-area';
 const ClientMessagesTable = () => {
 
     useEffect(() => {
+        setDisplayLoadingOverlay(true);
         fetchMessages();
     }, [])
 
     const [replied, setReplied] = useState(false);
     const [newrRecords, setNewRecords] = useState([]);
     const [viewedRecords, setViewedRecords] = useState([])
+    const setDisplayLoadingOverlay = useContext(DisplayLoadingOverlayHandler);
 
     const onToolbarPreparing = (e) => {
         let toolbarItems = e.toolbarOptions.items;
@@ -56,6 +60,7 @@ const ClientMessagesTable = () => {
 
     const fetchMessages = () => {
         requester.get("/messages/getAllMesages").then((res) => {
+            setDisplayLoadingOverlay(false);
             console.table("All Messages", res.data);
             var newdata = res.data.map((item) => {
                 return { ...item, time: parseInt(item.time) }
@@ -67,20 +72,27 @@ const ClientMessagesTable = () => {
     
     const UpdatedMessageState = (e) => {
         console.log(e.row.data);
+        setDisplayLoadingOverlay(true);
         requester.patch(`/messages/replied/${e.row.data._id}`).then(() => {
             fetchMessages();
+            setDisplayLoadingOverlay(false);
+            toast.success("Updated Sucessfully")
         }).catch(errorHandler)
     }
 
     const deleteMessage = (e) => {
         console.log("delete message ", e.row.data);
+        setDisplayLoadingOverlay(true);
         requester.delete(`/messages/deleteMessage/${e.row.data._id}`).then(() => {
+            setDisplayLoadingOverlay(false);
+            toast.success("Deleted Sucessfully")
             fetchMessages();
         }).catch(errorHandler)
     }
 
     const errorHandler = (e) => {
-        window.alert("Error Occurred");
+        setDisplayLoadingOverlay(false);
+        toast.error("Error Occurred");
         console.log(e)
     }
 
@@ -117,6 +129,7 @@ const ClientMessagesTable = () => {
                 <Column dataField="email" alignment={"center"} />
                 <Column dataField="phone" alignment={"center"} />
                 <Column dataField="subject" alignment={"center"} />
+                <Column visible={true} dataField="message" alignment={"center"} />
                 <Column dataField="time" alignment={"center"} dataType='datetime' />
                 <Column caption='Mark as read' type="buttons" width={110} buttons={[
                     {

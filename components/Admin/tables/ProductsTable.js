@@ -1,5 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { DisplayLoadingOverlayHandler } from "../../../pages/Contexts";
+import { toast } from 'react-toastify';
+import styles from "./dashboard.module.scss";
 import requester from "../../../utilities/requester";
+import BulletListEditor from "./BulletListEditor";
+import ProductImageEditor from "./ProductImageEditor";
+import ProductGalleryEditor from "./ProductGalleryEditor";
 import DataGrid, {
     Column,
     Editing,
@@ -16,20 +22,20 @@ import DataGrid, {
 } from 'devextreme-react/data-grid';
 import { Item } from 'devextreme-react/form';
 import 'devextreme-react/text-area';
-import BulletListEditor from "./BulletListEditor";
-import ProductImageEditor from "./ProductImageEditor";
-import ProductGalleryEditor from "./ProductGalleryEditor";
+
 
 
 const ProductsTable = () => {
 
     useEffect(() => {
+        setDisplayLoadingOverlay(true);
         fetchProducts();
     }, [])
 
     const [active, setActive] = useState(true);
     const [activeProducts, setActiveProducts] = useState([]);
     const [inactiveProducts, setInactiveProducts] = useState([])
+    const setDisplayLoadingOverlay = useContext(DisplayLoadingOverlayHandler);
 
     const onToolbarPreparing = (e) => {
         let toolbarItems = e.toolbarOptions.items;
@@ -45,16 +51,9 @@ const ProductsTable = () => {
         });
     }
 
-    const DetailTemplate = (props) => {
-        return (
-            <>
-                <p><b>title : </b>{props.data.data.title}</p>
-            </>
-        )
-    }
-
     const fetchProducts = () => {
         requester.get("/products/allProducts").then((res) => {
+            setDisplayLoadingOverlay(false);
             console.table("All products", res.data);
             setActiveProducts(res.data.filter(record => record.active));
             setInactiveProducts(res.data.filter(record => !record.active));
@@ -63,15 +62,18 @@ const ProductsTable = () => {
 
 
     const errorHandler = (e, str = "Error Occurred") => {
-        window.alert(str);
+        setDisplayLoadingOverlay(false);
+        toast.error(str);
         console.log(e)
     }
 
     const onRowRemoved = (e) => {
+        setDisplayLoadingOverlay(true);
         console.log(e);
         let { productId } = e.data;
         requester.delete(`/products/deleteProduct/${productId}`).then((res) => {
-            window.alert('Deleted successfully')
+            setDisplayLoadingOverlay(false);
+            toast.success('Deleted successfully')
         }).catch((e) => {
             fetchProducts();
             errorHandler(e);
@@ -79,6 +81,8 @@ const ProductsTable = () => {
     }
 
     const onRowInserted = (e) => {
+
+        setDisplayLoadingOverlay(true);
 
         console.log('add product ', e.data);
         const productFormData = new FormData();
@@ -97,8 +101,7 @@ const ProductsTable = () => {
         });
 
         requester.post('/products/addProduct', productFormData).then((res) => {
-            console.log("added product info successfully");
-
+            
             if (e.data["gallery"]) {
                 const galleryFormData = new FormData();
                 galleryFormData.append("productId", e.data.productId);
@@ -108,7 +111,8 @@ const ProductsTable = () => {
                 });
 
                 requester.post('/products/addImageProductGallery', galleryFormData).then(() => {
-                    window.alert('Added product info & images successfully');
+                    setDisplayLoadingOverlay(false);
+                    toast.success('Added product info & images successfully');
                     fetchProducts();
                 }).catch((e) => {
                     errorHandler(e, "Error Occurred in uploading images");
@@ -116,8 +120,9 @@ const ProductsTable = () => {
                 })
             }
             else {
+                setDisplayLoadingOverlay(false);
+                toast.success('Added product info successfully');
                 fetchProducts();
-                window.alert('Added product info successfully');
             }
 
         }).catch((e) => {
@@ -127,6 +132,8 @@ const ProductsTable = () => {
     }
 
     const onRowUpdated = (e) => {
+
+        setDisplayLoadingOverlay(true);
 
         console.log('edit product', e);
         const productFormData = new FormData();
@@ -156,7 +163,8 @@ const ProductsTable = () => {
                 });
 
                 requester.post('/products/addImageProductGallery', galleryFormData).then(() => {
-                    window.alert('updated product info & images successfully');
+                    setDisplayLoadingOverlay(false);
+                    toast.success('updated product info & images successfully');
                     fetchProducts()
                 }).catch((e) => {
                     errorHandler(e, "Error Occurred in uploading images");
@@ -164,8 +172,9 @@ const ProductsTable = () => {
                 })
             }
             else {
+                setDisplayLoadingOverlay(false);
+                toast.success('updated product info successfully');
                 fetchProducts();
-                window.alert('updated product info successfully');
             }
 
         }).catch((e) => {
@@ -254,19 +263,27 @@ const ProductsTable = () => {
 
                 <Column dataField="heroSectionItem" caption="Hero Product" alignment={"center"} cellRender={(rowData) => {
                     return (
-                        <button
+                        <span
+                            className={styles.fakelink}
                             onClick={() => {
+                                setDisplayLoadingOverlay(true);
                                 console.log("add to hero section data ", rowData.data.productId)
                                 requester.patch(`/products/addHeroSecProduct/${rowData.data.productId}`)
                                     .then((response) => {
+                                        setDisplayLoadingOverlay(false);
+                                        toast.success('Updated successfully');
                                         fetchProducts();
-                                        window.alert('Updated successfully');
+                                    })
+                                    .catch((e)=>{
+                                        setDisplayLoadingOverlay(false);
+                                        errorHandler(e)
+                                        fetchProducts();
                                     })
                             }
                             }
                         >
                             {rowData.data.heroSectionItem ? 'Remove' : 'Add'}
-                        </button>
+                        </span>
                     )
                 }}
                 />

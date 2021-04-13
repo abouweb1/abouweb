@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import requester from "../../../utilities/requester";
 import styles from "./ProductGalleryEditor.module.scss";
 
@@ -6,7 +7,6 @@ export default function ProductGalleryEditor(props) {
     
     const [imgSrcList, setImgSrcList] = useState(props.data.value || []);
     const [localImgSrcList, setLocalImgSrcList] = useState([]);
-    
     const inputRef = React.createRef();
 
     useEffect(() => {
@@ -15,7 +15,7 @@ export default function ProductGalleryEditor(props) {
     }, [])
 
     const errorHandler = (e, str="Error Occurred") => {
-        window.alert(str);
+        toast.error(str);
         console.log(e)
     }
 
@@ -47,7 +47,7 @@ export default function ProductGalleryEditor(props) {
         console.log("delete gallery image from database, image Id : ", imageId, "and productId : ", props.data.data.productId);
         requester.delete(`/products/deleteImageProductGallery/${imageId}/${props.data.data.productId}`).then(()=>{
             setImgSrcList(imgSrcList.filter(item=>item.imageId!==imageId))
-            window.alert("Image Deleted Successfully");
+            toast.success("Image Deleted Successfully")
         }).catch((e)=>{
             errorHandler(e, "Error Occurred, deleting failed")
         })
