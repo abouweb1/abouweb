@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useState } from 'react'
-import { DisplayLoadingOverlayHandler } from "./Contexts";
+import { DisplayLoadingOverlayHandler } from "../utilities/Contexts";
 import AnimationOverlay from '../components/animationOverlay/AnimationOverlay';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

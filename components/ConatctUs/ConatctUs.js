@@ -1,6 +1,6 @@
 import { useState, useContext } from "react"
 import { useRouter } from "next/router";
-import { DisplayLoadingOverlayHandler } from "../../pages/Contexts";
+import { DisplayLoadingOverlayHandler } from "../../utilities/Contexts";
 import { toast } from 'react-toastify';
 import requester from "../../utilities/requester";
 import PrimaryButton from "../Button/PrimaryButton";

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { DisplayLoadingOverlayHandler } from "../../../pages/Contexts";
+import { DisplayLoadingOverlayHandler } from "../../../utilities/Contexts";
 import { toast } from 'react-toastify';
 import styles from "./dashboard.module.scss";
 import requester from "../../../utilities/requester";
