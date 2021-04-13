@@ -9,7 +9,7 @@ const HeroSlide = (props) => {
     return (
         <div className={`${styles.slide} container`} >
             <div className={styles.imgContainer}>
-                <img src={props.productImage} draggable="false" loading="lazey" />
+                <img src={props.productImage} draggable="false" loading="lazey" alt={props.title}/>
             </div>
             <div
                 className={styles.info}

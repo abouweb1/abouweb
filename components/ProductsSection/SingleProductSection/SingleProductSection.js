@@ -9,11 +9,12 @@ import styles from "./SingleProductSection.module.scss";
 const SingleProductSection = (props) => {
     const router = useRouter();
 
-    const images = props.gallery.map(img => {
+    const images = props.gallery.map((img) => {
         return (
             {
                 original: img.imageUrl,
-                thumbnail: img.imageUrl
+                thumbnail: img.imageUrl,
+                originalAlt: props.title
             }
         )
     })
@@ -25,7 +26,7 @@ const SingleProductSection = (props) => {
                 <div className={styles.imgContainer}>
                     {/* in home page we show one image, but in product page we show all the product iamges in slider */}
                     {router.pathname === "/" ?
-                        <img src={props.productImage} alt={props.title} loading="lazy" />
+                        <img src={props.productImage} alt={props.title} loading="lazy" alt={props.title} />
                         :
                         <ImageGallery
                             items={images}
@@ -35,6 +36,7 @@ const SingleProductSection = (props) => {
                             showBullets={true}
                             showFullscreenButton={false}
                             useBrowserFullscreen={false}
+                            lazyLoad={true}
                         />
                     }
                 </div>
