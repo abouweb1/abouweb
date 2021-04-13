@@ -26,7 +26,7 @@ function product(props) {
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={`https:/abouweb-abouweb1.vercel.app/product/${id}`} />
         <meta property="twitter:description" content={product.description} />
-        <meta property="twitter:image" content={`/assets/products/${product.productImage}.jpg`} />
+        <meta property="twitter:image" content={`${product.productImage}`} />
       </Head>
       <Layout>
         <SingleProductSection
