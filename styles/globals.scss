@@ -18,6 +18,7 @@ body {
 }
 
 .layout{
+  position: relative;
   display:flex;
   flex-direction: column;
   justify-content: space-between;
@@ -26,6 +27,9 @@ body {
 
 .main{
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .container{
@@ -35,6 +39,17 @@ body {
   @media (max-width:1400px) {
       width: 90%;
       margin: 0px 5%;
+  }
+}
+
+.notFoundContainer{
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  p{
+    font-size: 1.2rem;
   }
 }
 
@@ -56,14 +71,14 @@ a{
   color: inherit;
 }
 
-
-
 .hiddenInMobile{
   @media (max-width : 768px) {
     display: none !important;
   }
   
 }
+
+
 
 // react-image-gallery" styles OverRide
 
@@ -72,6 +87,7 @@ a{
   width: 2rem !important;
   height: auto !important;
 }
+
 .image-gallery-slide{
   &:focus{
     outline: none;
