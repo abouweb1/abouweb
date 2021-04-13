@@ -23,19 +23,14 @@ const BulletListEditor = (props) => {
     }
 
     return (
-
         <>
-
             <TextBox onValueChanged={(e) => setInput(e.value)} value={input}>
-
                 <Button
                     name="Add"
                     location="after"
                     options={addButton}
                 />
-
             </TextBox>
-
             <List
                 noDataText={'No Data'}
                 className='mt-2'
@@ -48,7 +43,6 @@ const BulletListEditor = (props) => {
                     props.data.setValue([...list]);
                 }}
             />
-
         </>
     );
 };

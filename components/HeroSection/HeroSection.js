@@ -1,8 +1,8 @@
+import React from 'react';
 import { useRouter } from "next/router"
 import styles from "./HeroSection.module.scss";
 import HeroSlide from "./HeroSlide";
 import Carousel from "react-multi-carousel";
-import Products from "../../DummyData/Products";
 import "react-multi-carousel/lib/styles.css";
 
 

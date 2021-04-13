@@ -55,7 +55,3 @@ const Header = () => {
 };
 
 export default Header;
-
-{/* <button onClick={() => {
-              router.push(`${window.location.pathname}`, `${window.location.pathname}`, { locale: 'ar' })
-            }}>change</button> */}

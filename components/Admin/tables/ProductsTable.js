@@ -60,7 +60,6 @@ const ProductsTable = () => {
         }).catch(errorHandler)
     }
 
-
     const errorHandler = (e, str = "Error Occurred") => {
         setDisplayLoadingOverlay(false);
         toast.error(str);
@@ -101,7 +100,7 @@ const ProductsTable = () => {
         });
 
         requester.post('/products/addProduct', productFormData).then((res) => {
-            
+
             if (e.data["gallery"]) {
                 const galleryFormData = new FormData();
                 galleryFormData.append("productId", e.data.productId);
@@ -183,6 +182,29 @@ const ProductsTable = () => {
         })
     }
 
+    const renderHeroProductColumn = (rowData) => {
+
+        let clickHandler = () => {
+            setDisplayLoadingOverlay(true);
+            console.log("add to hero section data ", rowData.data.productId)
+            requester.patch(`/products/addHeroSecProduct/${rowData.data.productId}`)
+                .then((response) => {
+                    setDisplayLoadingOverlay(false);
+                    toast.success('Updated successfully');
+                    fetchProducts();
+                })
+                .catch((e) => {
+                    setDisplayLoadingOverlay(false);
+                    errorHandler(e)
+                    fetchProducts();
+                })
+        }
+
+        return (
+            <span className={styles.fakelink} onClick={clickHandler}>{rowData.data.heroSectionItem ? 'Remove' : 'Add'}</span>
+        )
+    }
+
     return (
         <div>
             Products Table
@@ -212,25 +234,17 @@ const ProductsTable = () => {
                     showNavigationButtons={true}
                 />
 
-                <Editing
-                    mode="popup"
-                    allowUpdating={true}
-                    allowDeleting={true}
-                    allowAdding={true}
-                    useIcons={true}
-                >
+                <Editing mode="popup" allowUpdating={true} allowDeleting={true} allowAdding={true} useIcons={true}>
                     <Popup onContentReady={() => { }} onHidden={() => { }} title="Products" showTitle={true} width={700} height={600} maxHeight={'80%'}>
                         <Position my="center" at="center" of={window} />
                     </Popup>
-
                     <Form>
                         <Item colSpan="2" dataField="title" alignment={"center"} />
-                        {/* ---------------------------------------------------------Hidden Items------------------------------------- */}
                         <Item colSpan="2" dataField="title_ar" />
                         <Item colSpan="2" dataField="superTitle" />
                         <Item colSpan="2" dataField="superTitle_ar" />
-                        <Item colSpan="2" dataField="subtitle" />
-                        <Item colSpan="2" dataField="subtitle_ar" />
+                        {/* // <Item colSpan="2" dataField="subtitle" /> */}
+                        {/* <Item colSpan="2" dataField="subtitle_ar" /> */}
                         <Item colSpan="2" dataField="description" />
                         <Item colSpan="2" dataField="description_ar" />
                         <Item colSpan="2" dataField="bulletList" />
@@ -240,55 +254,28 @@ const ProductsTable = () => {
                         <Item colSpan="2" dataField="productImage" />
                         <Item colSpan="2" dataField="gallery" />
                     </Form>
-
                 </Editing>
 
-                <Column dataField="title" alignment={"center"} />
-                <Column dataField="title_ar" alignment={"center"} />
-                <Column dataField="active" alignment={"center"} dataType='boolean' />
-                <Column dataField="productId" alignment={"center"} />
-                {/* ---------------------------------------------------------Hidden Columns------------------------------------- */}
-                <Column visible={false} dataField="superTitle" alignment={"center"} />
-                <Column visible={false} dataField="superTitle_ar" alignment={"center"} />
-                <Column visible={false} dataField="subtitle" alignment={"center"} />
-                <Column visible={false} dataField="subtitle_ar" alignment={"center"} />
-                <Column visible={false} dataField="description" alignment={"center"} />
-                <Column visible={false} dataField="description_ar" alignment={"center"} />
-                <Column visible={false} dataField="bulletList" alignment={"center"} editCellComponent={BulletListEditor} />
-                <Column visible={false} dataField="bulletList_ar" alignment={"center"} editCellComponent={BulletListEditor} />
-                <Column visible={false} dataField="productImage" alignment={"center"} editCellComponent={ProductImageEditor} />
-                <Column visible={false} dataField="gallery" alignment={"center"} editCellComponent={ProductGalleryEditor} />
-                <Column visible={false} dataField="_id" alignment={"center"} />
-
-
-                <Column dataField="heroSectionItem" caption="Hero Product" alignment={"center"} cellRender={(rowData) => {
-                    return (
-                        <span
-                            className={styles.fakelink}
-                            onClick={() => {
-                                setDisplayLoadingOverlay(true);
-                                console.log("add to hero section data ", rowData.data.productId)
-                                requester.patch(`/products/addHeroSecProduct/${rowData.data.productId}`)
-                                    .then((response) => {
-                                        setDisplayLoadingOverlay(false);
-                                        toast.success('Updated successfully');
-                                        fetchProducts();
-                                    })
-                                    .catch((e)=>{
-                                        setDisplayLoadingOverlay(false);
-                                        errorHandler(e)
-                                        fetchProducts();
-                                    })
-                            }
-                            }
-                        >
-                            {rowData.data.heroSectionItem ? 'Remove' : 'Add'}
-                        </span>
-                    )
-                }}
-                />
+                <Column dataField="title"           alignment={"center"} />
+                <Column dataField="title_ar"        alignment={"center"} />
+                <Column dataField="active"          alignment={"center"} dataType='boolean' />
+                <Column dataField="productId"       alignment={"center"} />
+                <Column dataField="heroSectionItem" alignment={"center"} caption="Hero Product" cellRender={renderHeroProductColumn}/>
+                <Column dataField="superTitle"      alignment={"center"} visible={false} />
+                <Column dataField="superTitle_ar"   alignment={"center"} visible={false} />
+                {/* <Column dataField="subtitle"        alignment={"center"} visible={false} /> */}
+                {/* <Column dataField="subtitle_ar"     alignment={"center"} visible={false} /> */}
+                <Column dataField="description"     alignment={"center"} visible={false} />
+                <Column dataField="description_ar"  alignment={"center"} visible={false} />
+                <Column dataField="_id"             alignment={"center"} visible={false} />
+                <Column dataField="bulletList"      alignment={"center"} visible={false} editCellComponent={BulletListEditor} />
+                <Column dataField="bulletList_ar"   alignment={"center"} visible={false} editCellComponent={BulletListEditor} />
+                <Column dataField="productImage"    alignment={"center"} visible={false} editCellComponent={ProductImageEditor} />
+                <Column dataField="gallery"         alignment={"center"} visible={false} editCellComponent={ProductGalleryEditor} />
                 <Column type="buttons" width={110} buttons={['edit', 'delete']} />
+
                 <Export enabled={true} />
+
             </DataGrid>
         </div>
     );

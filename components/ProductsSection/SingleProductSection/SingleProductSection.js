@@ -10,10 +10,10 @@ const SingleProductSection = (props) => {
     const router = useRouter();
 
     const images = props.gallery.map(img => {
-        return(
+        return (
             {
-                original  : img.imageUrl,
-                thumbnail : img.imageUrl
+                original: img.imageUrl,
+                thumbnail: img.imageUrl
             }
         )
     })
@@ -35,7 +35,6 @@ const SingleProductSection = (props) => {
                             showBullets={true}
                             showFullscreenButton={false}
                             useBrowserFullscreen={false}
-                            
                         />
                     }
                 </div>
@@ -50,7 +49,7 @@ const SingleProductSection = (props) => {
 
                     <ul>
                         {props.bulletList.map((listItem, idx) => {
-                            if(!!listItem){
+                            if (!!listItem) {
                                 return (
                                     <li key={idx}><IoCheckmark />&nbsp;{listItem}</li>
                                 )
@@ -61,7 +60,7 @@ const SingleProductSection = (props) => {
                     {props.showProdcutLink &&
                         <Link href={`/product/${props.id}`} locale={router.locale === "ar" ? "ar" : "en"}>
                             <a>
-                                <PrimaryButton>{router.locale === "ar"? "المزيد" : "Check Now"}</PrimaryButton>
+                                <PrimaryButton>{router.locale === "ar" ? "المزيد" : "Check Now"}</PrimaryButton>
                             </a>
                         </Link>
                     }

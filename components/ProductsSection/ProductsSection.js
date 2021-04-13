@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
+import React from 'react';
 import { useRouter } from "next/router";
-import requester from "../../utilities/requester";
-import Base64Image from "../ImageComponent/Base64Image";
 import SingleProductSection from './SingleProductSection/SingleProductSection';
-import Products from "../../DummyData/Products";
 
 const ProductsSection = (props) => {
 

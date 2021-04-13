@@ -108,7 +108,6 @@ const ClientMessagesTable = () => {
                 cellHintEnabled={true}
                 wordWrapEnabled={true}
                 rowAlternationEnabled={true}
-                // onRowRemoved={deleteBrand}
                 onToolbarPreparing={onToolbarPreparing}
                 columnHidingEnabled
                 

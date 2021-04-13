@@ -85,9 +85,10 @@
         @media (max-width : 768px) {
           justify-content: center;
         }
-
-        &:hover {
-          text-decoration: underline;
+        span{
+          &:hover {
+            text-decoration: underline;
+          }
         }
 
         svg {
@@ -123,8 +124,9 @@
           }
 
           &:hover {
-            text-decoration: underline;
-
+            span{
+              text-decoration: underline;
+            }
             svg {
               color: #00E676;
             }

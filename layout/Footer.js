@@ -25,9 +25,21 @@ const Footer = () => {
                         </div>
                         <div  className={styles.contacts}>
                             <h4>{router.locale === "ar" ? "تواصل معنا" : "Contact Us"}</h4>
-                            <a className={styles.whatsapp}  target="_blank" href="https://api.whatsapp.com/send?phone=201099995555"><IoLogoWhatsapp/>&nbsp;<span>{router.locale === "ar" ? "راسلنا على واتساب" : "Chat on WhatsApp"}</span></a>
-                            <a className={styles.contactLink}  target="_blank" href="tel:+201099995555"><FiPhone/>&nbsp;<span>{router.locale === "ar" ? "۰۱۰۹۹۹۹٥٥٥٥" : "201099995555"}</span> </a>
-                            <a className={styles.contactLink}  target="_blank" href="mailto:info@aboulazm.com"><FiMail/>&nbsp;<span>info@aboulazm.com</span> </a>
+                            <a className={styles.whatsapp}  target="_blank" href="https://api.whatsapp.com/send?phone=201099995555">
+                                <IoLogoWhatsapp/>
+                                &nbsp;
+                                <span>{router.locale === "ar" ? "راسلنا على واتساب" : "Chat on WhatsApp"}</span>
+                            </a>
+                            <a className={styles.contactLink}  target="_blank" href="tel:+201099995555">
+                                <FiPhone/>
+                                &nbsp;
+                                <span>{router.locale === "ar" ? "۰۱۰۹۹۹۹٥٥٥٥" : "201099995555"}</span> 
+                            </a>
+                            <a className={styles.contactLink}  target="_blank" href="mailto:info@aboulazm.com">
+                                <FiMail/>
+                                &nbsp;
+                                <span>info@aboulazm.com</span> 
+                            </a>
                         </div>
                         <div className={styles.social}>
                         <h4>{router.locale === "ar" ? "وسائل التواصل الاجتماعى" : "Social Media"}</h4>
