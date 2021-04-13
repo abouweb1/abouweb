@@ -1,5 +1,7 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { useRouter } from "next/router";
+import { DisplayLoadingOverlayHandler } from "../../pages/Contexts";
+import { toast } from 'react-toastify';
 import requester from "../../utilities/requester";
 import PrimaryButton from "../Button/PrimaryButton";
 import styles from "./ContactUs.module.scss"
@@ -25,6 +27,7 @@ const initialFormValues = {
 
 const ConatctUs = () => {
     const router = useRouter();
+    const setDisplayLoadingOverlay = useContext(DisplayLoadingOverlayHandler);
     const [form, setForm] = useState(initialFormValues)
     const [error, setError] = useState(null)
 
@@ -41,14 +44,9 @@ const ConatctUs = () => {
         const isValidEmail = re.test(String(email).toLowerCase());
         const isValidPhone = phone.length >= 7;
         console.log(isValidEmail, isValidPhone)
-        return (isValidEmail||isValidPhone)
-
+        return (isValidEmail&&isValidPhone)
     }
 
-
-    const formValidator =(formdata)=>{
-
-    }
 
     const handleSubmit =(e)=>{
         e.preventDefault();
@@ -56,10 +54,13 @@ const ConatctUs = () => {
         if(validateEmailOrPhone(form.email, form.phone)){
             let payload = {...form, time : Date.now().toString()};
             // console.log(payload);
+            setDisplayLoadingOverlay(true);
             requester.post("/messages/sendMessage", payload).then(()=>{
-                window.alert(router.locale === "ar" ? "تم إرسال الرساللة بنجاح"  : "Message Sent Successfully")
+                setDisplayLoadingOverlay(false);
+                toast.success(router.locale === "ar" ? "تم إرسال الرساللة بنجاح"  : "Message Sent Successfully")
             }).catch(()=>{
-                window.alert("Error Occurred");
+                setDisplayLoadingOverlay(false);
+                toast.error("Error Occurred");
             })
             setForm(initialFormValues);
         }
