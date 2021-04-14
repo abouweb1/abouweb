@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }) {
     <DisplayLoadingOverlayHandler.Provider value={setDisplayLoadingOverlay}>
       <div className={"layout"}>
         <Head>
-          <meta name="google-site-verification" content="6ir5SaP0_01UoeAAcbM9xATSbJJ9wU3a9sCRBmQZGqM"/>
+          <meta name="google-site-verification" content="ONJ1unNt8ctFuKpJ6fV_fJa7f2z1Dog5GStLWWvf9PE" />
           <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png"/>
           <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png"/>
           <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png"/>
