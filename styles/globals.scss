@@ -98,6 +98,7 @@ a{
   // to edit "react-image-gallery" bullet style
   box-shadow: none!important;
   background-color: $mid-grey !important;
+  @media (max-width : 768px) {display: none !important;}
 }
 
 .image-gallery-bullets .image-gallery-bullet.active{
