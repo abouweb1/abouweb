@@ -51,7 +51,7 @@ const HeroSection = (props) => {
         dotListClass={styles.dotListClass}
       >
         {
-          productsList.map((product) => {
+          productsList.reverse().map((product) => {
             return (
               <HeroSlide
                 id={product.productId}
