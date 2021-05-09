@@ -7,11 +7,15 @@ import HeroSection from '../components/HeroSection/HeroSection'
 import ConatctUs from '../components/ConatctUs/ConatctUs'
 import ProductsSection from '../components/ProductsSection/ProductsSection'
 
-function Home(props) {
+function Home() {
   const [productsData, setProductsData] = useState(null);
   const setDisplayLoadingOverlay = useContext(DisplayLoadingOverlayHandler);
   useEffect(() => {
-    setDisplayLoadingOverlay(true);
+    if(!window.localStorage.getItem("productsData")){
+      setDisplayLoadingOverlay(true);
+    }else{
+      setProductsData(JSON.parse(window.localStorage.getItem("productsData")))
+    }
     fetchProductsData()
   }, [])
 
@@ -34,8 +38,8 @@ function Home(props) {
           ar: hero_product_ar.data
         }
       };
-
-      setProductsData(productsData)
+      window.localStorage.setItem("productsData", JSON.stringify(productsData));
+      setProductsData(productsData);
     }
   }
   return (
