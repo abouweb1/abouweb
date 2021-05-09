@@ -7,8 +7,12 @@
     transition: $trans-250;
     font-weight: 500;
     font-size: 1rem;
+    @media (max-width : 768px) {font-size: 1.2rem}
     font-family: $mainFontFamily;
     padding: 0.8rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     &:hover{background-color: $primary-dark;}
 }
