@@ -29,7 +29,7 @@ const responsive = {
 
 
 const HeroSection = (props) => {
-  const productsList = useRouter().locale === "en" ? props.products.en : props.products.ar;
+  const productsList = useRouter().locale === "en" ? props?.products?.en || [] : props?.products?.ar || [];
   return (
     <section id={"#homeHeroSection"} className={styles.hero}>
       <Carousel

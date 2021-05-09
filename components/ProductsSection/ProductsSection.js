@@ -4,10 +4,10 @@ import SingleProductSection from './SingleProductSection/SingleProductSection';
 
 const ProductsSection = (props) => {
 
-  const productsList = useRouter().locale === "en" ? props.products.en : props.products.ar;
+  const productsList = useRouter().locale === "en" ? props?.products?.en || [] : props?.products?.ar || [];
 
   return (
-    <div id="#products">
+    <div id="#products" style={{minHeight:"100vh"}}>
 
       {productsList.map((product) => {
         return (

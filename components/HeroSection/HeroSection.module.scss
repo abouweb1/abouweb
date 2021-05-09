@@ -22,6 +22,7 @@
         bottom: 1.2rem;
         li{
             button{
+                @media (max-width : 768px) {display: none;}
                 border-color: transparent;
                 filter: brightness(0.85);
             }

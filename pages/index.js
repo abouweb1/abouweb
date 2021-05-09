@@ -1,4 +1,6 @@
-import Head from 'next/head'
+import { useState, useEffect, useContext } from "react";
+import { DisplayLoadingOverlayHandler } from "../utilities/Contexts";
+import Head from 'next/head';
 import requester from "../utilities/requester";
 import Layout from "../layout/Layout";
 import HeroSection from '../components/HeroSection/HeroSection'
@@ -6,7 +8,36 @@ import ConatctUs from '../components/ConatctUs/ConatctUs'
 import ProductsSection from '../components/ProductsSection/ProductsSection'
 
 function Home(props) {
+  const [productsData, setProductsData] = useState(null);
+  const setDisplayLoadingOverlay = useContext(DisplayLoadingOverlayHandler);
+  useEffect(() => {
+    setDisplayLoadingOverlay(true);
+    fetchProductsData()
+  }, [])
 
+  const fetchProductsData = async () => {
+    console.log("initiate data requests");
+    const product_en = await requester.get(`/products/activeProducts/en`).catch(() => { });
+    const product_ar = await requester.get(`/products/activeProducts/ar`).catch(() => { });
+    const hero_product_ar = await requester.get(`/products/getHeroSecProducts/ar`).catch(() => { });
+    const hero_product_en = await requester.get(`/products/getHeroSecProducts/en`).catch(() => { });
+    setDisplayLoadingOverlay(false);
+    if (product_en && product_ar && hero_product_en && hero_product_ar) {
+      console.log("all data fetched successfully");
+      let productsData = {
+        products: {
+          en: product_en.data,
+          ar: product_ar.data
+        },
+        heroProducts: {
+          en: hero_product_en.data,
+          ar: hero_product_ar.data
+        }
+      };
+
+      setProductsData(productsData)
+    }
+  }
   return (
     <>
       <Head>
@@ -27,52 +58,12 @@ function Home(props) {
 
       </Head>
       <Layout>
-        <HeroSection products={props.heroProducts} />
-        <ProductsSection products={props.products} />
+        <HeroSection products={productsData?.heroProducts} />
+        <ProductsSection products={productsData?.products} />
         <ConatctUs />
       </Layout>
     </>
   )
 }
-
-
-export async function getServerSideProps(context) {
-  console.log("initiate data requests");
-  const product_en = await requester.get(`/products/activeProducts/en`).catch(() => { });
-  const product_ar = await requester.get(`/products/activeProducts/ar`).catch(() => { });
-  const hero_product_ar = await requester.get(`/products/getHeroSecProducts/ar`).catch(() => { });
-  const hero_product_en = await requester.get(`/products/getHeroSecProducts/en`).catch(() => { });
-
-  if ( product_en && product_ar && hero_product_en && hero_product_ar ) {
-    console.log("all data fetched successfully");
-    let data = {
-      products:{
-        en: product_en.data,
-        ar: product_ar.data
-      },
-      heroProducts:{
-        en: hero_product_en.data,
-        ar: hero_product_ar.data
-      }
-    };
-
-    return {
-      props: { ...data }, // will be passed to the page component as props
-    }
-
-  }
-  else{
-    console.log("failed to fetch data, redirect to '/404'");
-    return {
-      redirect: {
-        destination: '/404',
-        permanent: false,
-      }
-    }
-  }
-
-}
-
-
 
 export default Home;
