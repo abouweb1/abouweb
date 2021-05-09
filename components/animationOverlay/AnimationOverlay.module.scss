@@ -5,18 +5,18 @@
     z-index: 2000;
     height: 100vh;
     width: 100%;
-    background-color: #000000db;
+    background-color: #000000a6;
     display: flex;
     justify-content: center;
     align-items: center;
 
     .loader {
         border-radius: 50%;
-        border: 1rem solid #ffffff00;
-        border-top: 1rem solid #0F6DAE;
-        border-right: 1rem solid #0F6DAE;
-        width: 7rem;
-        height: 7rem;
+        border: 0.5rem solid #ffffff00;
+        border-top: 0.5rem solid #0F6DAE;
+        border-right: 0.5rem solid #0F6DAE;
+        width: 4rem;
+        height: 4rem;
         -webkit-animation: spin 0.75s linear infinite; /* Safari */
         animation: spin 0.75s linear infinite;
       }
