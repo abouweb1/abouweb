@@ -1,6 +1,10 @@
 import Router from "next/router";
 import NProgress from "nprogress";
 
+NProgress.configure({
+    showSpinner: false
+});
+
 let timer;
 let state;
 let activeRequests = 0;
@@ -54,6 +58,6 @@ window.fetch = async function (...args) {
   }
 };
 
-export default function () {
+export default function named () {
   return null;
 }
