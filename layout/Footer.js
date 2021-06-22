@@ -16,11 +16,12 @@ const Footer = () => {
                             <a className={styles.contactLink} target="_blank" href="https://www.google.com/maps/place/%D8%A7%D9%84%D8%AC%D9%87%D8%A7%D8%B2+%D8%A7%D9%84%D9%82%D9%88%D9%85%D9%8A+%D9%84%D8%AA%D9%86%D8%B8%D9%8A%D9%85+%D8%A7%D9%84%D8%A7%D8%AA%D8%B5%D8%A7%D9%84%D8%A7%D8%AA%E2%80%AD/@30.054989,31.311421,15z/data=!4m5!3m4!1s0x0:0xf5369d57ffd43405!8m2!3d30.0549891!4d31.3114214" rel="noreferrer">
                                 <GoLocation/>
                                 &nbsp;
-                                <span>{router.locale === "ar" ? "القاهرة -  مصر" : "Cairo, Egypt"}</span>
+                                            <span>{router.locale === "ar" ? <span>89 شارع محمد فريد - وسط البلد - القاهرة</span> : "89 Mohammed Farid St. - Down Town - Cario"}</span>
+
                             </a>
+               
                             <iframe 
-                              title={"location map"}
-                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.289588661708!2d31.307914738265907!3d30.057232609885872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145840c63ce95b0d%3A0xf5369d57ffd43405!2z2KfZhNis2YfYp9iyINin2YTZgtmI2YXZiiDZhNiq2YbYuNmK2YUg2KfZhNin2KrYtdin2YTYp9iq!5e0!3m2!1sar!2seg!4v1616359780866!5m2!1sar!2seg" 
+                              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3453.763929530018!2d31.2371448!3d30.0436298!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145840b9de709c55%3A0xd9d70ac025d0cbfd!2s89%20Mohammed%20Farid%2C%20As%20Sahah%2C%20Abdeen%2C%20Cairo%20Governorate!5e0!3m2!1sen!2seg!4v1624339865167!5m2!1sen!2seg"
                               loading="lazy"
                             >
                             </iframe>
