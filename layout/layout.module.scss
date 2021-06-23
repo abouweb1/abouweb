@@ -53,14 +53,14 @@
 
     .mainFooterWrapper {
       display        : flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items    : flex-start;
      
 
       .address,
       .contacts,
       .social {
-        width: 25%;
+        width: 33%;
         h4 {
           font-family  : $mainFontFamily;
           font-weight  : 400;
@@ -71,12 +71,25 @@
           font-weight  : 300;
           width        : 100%;
           margin-bottom: 0.66rem;
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-start;
         }
 
         p {
           font-weight: 200;
           color      : inherit;
         }
+      }
+
+      .contacts{
+        display: flex;
+        justify-content: center;
+      }
+
+      .social{
+        display: flex;
+        justify-content: center;
       }
 
       .contactLink {

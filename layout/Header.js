@@ -29,11 +29,11 @@ const Header = () => {
 
           {router.pathname === "/" ?
             <>
-              <a id="homeHeroSection" onClick={windowScroll}>{router.locale === "ar" ? "الرئيسية" : "home"}</a>
+              <a id="homeHeroSection" onClick={windowScroll}>{router.locale === "ar" ? "الرئيسية" : "Home"}</a>
               <a id="products" className="hiddenInMobile" onClick={windowScroll}>{router.locale === "ar" ? "المنتجات" : "Products"}</a>
             </>
             :
-            <Link href="/"><a>{router.locale === "ar" ? "الرئيسية" : "home"}</a></Link>
+            <Link href="/"><a>{router.locale === "ar" ? "الرئيسية" : "Home"}</a></Link>
           }
 
           <a id="contactUs" onClick={windowScroll}>{router.locale === "ar" ? "تواصل" : "Contact"}</a>

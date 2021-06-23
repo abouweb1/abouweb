@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }) {
         <Head>
           <meta name="google-site-verification" content="udoFOBrAzGjO_24zy55qfVL-UsWhps-VhuPSEV4AIW0" />
           <meta name="keywords" content="لصق, شمع, لصق إنشائى, لصق دوكو, شمع اصفر, مسامير, بويه, مزيل صدئ, سنفرة, لصق بنائي, شحم, ملمع معادن, حديد, حدايد خشب, نجارة, اوكر, اصابع شمع, مسدس شمع, ابواب, ابو, ابو العزم, طارق ابو العزم, انشائى, تشطيب, بناء, تشييد, دهان, صنفرة, سمكرة, خردوات" />
-          <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+          <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
           <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
           <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
           <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />

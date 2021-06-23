@@ -235,18 +235,13 @@ const ProductsTable = () => {
                 />
 
                 <Editing mode="popup" allowUpdating={true} allowDeleting={true} allowAdding={true} useIcons={true}>
-                    <Popup onContentReady={() => { }} onHidden={() => { }} title="Products" showTitle={true} width={700} height={600} maxHeight={'80%'}>
-                        <Position my="center" at="center" of={window} />
-                    </Popup>
                     <Form>
                         <Item colSpan="2" dataField="title" alignment={"center"} />
                         <Item colSpan="2" dataField="title_ar" />
                         <Item colSpan="2" dataField="superTitle" />
                         <Item colSpan="2" dataField="superTitle_ar" />
-                        {/* // <Item colSpan="2" dataField="subtitle" /> */}
-                        {/* <Item colSpan="2" dataField="subtitle_ar" /> */}
-                        <Item colSpan="2" dataField="description" />
-                        <Item colSpan="2" dataField="description_ar" />
+                        <Item colSpan="2" dataField="description" editorType="dxTextArea" editorOptions={{ height: 200 }} />
+                        <Item colSpan="2" dataField="description_ar" editorType="dxTextArea" editorOptions={{ height: 200 }} />
                         <Item colSpan="2" dataField="bulletList" />
                         <Item colSpan="2" dataField="bulletList_ar" />
                         <Item colSpan="2" dataField="active" dataType='boolean' />
@@ -256,22 +251,20 @@ const ProductsTable = () => {
                     </Form>
                 </Editing>
 
-                <Column dataField="title"           alignment={"center"} />
-                <Column dataField="title_ar"        alignment={"center"} />
-                <Column dataField="active"          alignment={"center"} dataType='boolean' />
-                <Column dataField="productId"       alignment={"center"} />
-                <Column dataField="heroSectionItem" alignment={"center"} caption="Hero Product" cellRender={renderHeroProductColumn}/>
-                <Column dataField="superTitle"      alignment={"center"} visible={false} />
-                <Column dataField="superTitle_ar"   alignment={"center"} visible={false} />
-                {/* <Column dataField="subtitle"        alignment={"center"} visible={false} /> */}
-                {/* <Column dataField="subtitle_ar"     alignment={"center"} visible={false} /> */}
-                <Column dataField="description"     alignment={"center"} visible={false} />
-                <Column dataField="description_ar"  alignment={"center"} visible={false} />
-                <Column dataField="_id"             alignment={"center"} visible={false} />
-                <Column dataField="bulletList"      alignment={"center"} visible={false} editCellComponent={BulletListEditor} />
-                <Column dataField="bulletList_ar"   alignment={"center"} visible={false} editCellComponent={BulletListEditor} />
-                <Column dataField="productImage"    alignment={"center"} visible={false} editCellComponent={ProductImageEditor} />
-                <Column dataField="gallery"         alignment={"center"} visible={false} editCellComponent={ProductGalleryEditor} />
+                <Column dataField="title" alignment={"center"} />
+                <Column dataField="title_ar" alignment={"center"} />
+                <Column dataField="active" alignment={"center"} dataType='boolean' />
+                <Column dataField="productId" alignment={"center"} />
+                <Column dataField="heroSectionItem" alignment={"center"} caption="Hero Product" cellRender={renderHeroProductColumn} />
+                <Column dataField="superTitle" alignment={"center"} visible={false} />
+                <Column dataField="superTitle_ar" alignment={"center"} visible={false} />
+                <Column dataField="description" alignment={"center"} visible={false} />
+                <Column dataField="description_ar" alignment={"center"} visible={false} />
+                <Column dataField="_id" alignment={"center"} visible={false} />
+                <Column dataField="bulletList" alignment={"center"} visible={false} editCellComponent={BulletListEditor} />
+                <Column dataField="bulletList_ar" alignment={"center"} visible={false} editCellComponent={BulletListEditor} />
+                <Column dataField="productImage" alignment={"center"} visible={false} editCellComponent={ProductImageEditor} />
+                <Column dataField="gallery" alignment={"center"} visible={false} editCellComponent={ProductGalleryEditor} />
                 <Column type="buttons" width={110} buttons={['edit', 'delete']} />
 
                 <Export enabled={true} />
