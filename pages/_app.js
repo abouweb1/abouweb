@@ -10,10 +10,6 @@ import '../styles/globals.scss';
 // styling for "react image gallery" package.
 import "react-image-gallery/styles/scss/image-gallery.scss";
 
-// styling for "devextreme" package.
-import 'devextreme/dist/css/dx.common.css';
-import 'devextreme/dist/css/dx.light.css';
-
 //  component and stylign for nprogress bar
 import "nprogress/nprogress.css";
 const TopProgressBar = dynamic(
