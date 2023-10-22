@@ -30,7 +30,7 @@ const SingleProductSection = (props) => {
             />
           ) : (
             <ImageGallery
-              items={images}
+              items={images?.length ? images : []}
               showThumbnails={false}
               showPlayButton={false}
               showNav={true}
