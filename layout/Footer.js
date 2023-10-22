@@ -33,7 +33,7 @@ const Footer = () => {
                             </iframe>
                         </div>
 
-                        <div className={styles.contacts}>
+                        <div id="#contactUs" className={styles.contacts}>
                             <div>
                                 <h4>{router.locale === "ar" ? "تواصل معنا" : "Contact Us"}</h4>
                                 <a className={styles.whatsapp} target="_blank" href="https://api.whatsapp.com/send?phone=201099995555" rel="noreferrer">
