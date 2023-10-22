@@ -9,15 +9,15 @@ const HeroSlide = (props) => {
     return (
         <div className={`${styles.slide} container`} >
             <div className={styles.imgContainer}>
-                <img src={props.productImage} draggable="false" loading="lazey" alt={props.title}/>
+                <img src={props?.productImage} draggable="false" loading="lazey" alt={props?.title}/>
             </div>
             <div
                 className={styles.info}
                 dir="auto"
             >
-                <h1 draggable="false" >{props.title}</h1>
-                <p draggable="false" >{props.description}</p>
-                <Link href={`/product/${props.id}`} locale={router.locale === "ar" ? "ar" : "en"}>
+                <h1 draggable="false" >{props?.title}</h1>
+                <p draggable="false" >{props?.description}</p>
+                <Link href={`/product/${props?.id}`} locale={router.locale === "ar" ? "ar" : "en"}>
                         <PrimaryButton draggable="false" >{router.locale === "ar" ? "المزيد" : "Check Now"}</PrimaryButton>
                 </Link>
             </div>

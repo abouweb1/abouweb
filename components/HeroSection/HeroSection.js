@@ -50,11 +50,11 @@ const HeroSection = (props) => {
         {productsList.reverse().map((product) => {
           return (
             <HeroSlide
-              id={product.productId}
-              key={product.productId}
-              productImage={product.productImage}
-              title={router.locale === "ar" ? product.title_ar : product.title}
-              description={router.locale === "ar" ? product.description_ar : product.description}
+              id={product?.productId}
+              key={product?.productId}
+              productImage={product?.productImage}
+              title={router.locale === "ar" ? product?.title_ar : product?.title}
+              description={router.locale === "ar" ? product?.description_ar : product?.description}
             />
           );
         })}

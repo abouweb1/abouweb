@@ -9,10 +9,10 @@ import styles from "./SingleProductSection.module.scss";
 const SingleProductSection = (props) => {
   const router = useRouter();
 
-  const images = props.gallery.map((img) => {
+  const images = props?.gallery?.map((img) => {
     return {
-      original: img.imageUrl,
-      thumbnail: img.imageUrl,
+      original: img?.imageUrl,
+      thumbnail: img?.imageUrl,
       originalAlt: router.locale === "ar" ? props?.title_ar : props?.title,
     };
   });
@@ -24,7 +24,7 @@ const SingleProductSection = (props) => {
           {/* in home page we show one image, but in product page we show all the product iamges in slider */}
           {router.pathname === "/" ? (
             <img
-              src={props.productImage}
+              src={props?.productImage}
               alt={router.locale === "ar" ? props?.title_ar : props?.title}
               loading="lazy"
             />
@@ -61,7 +61,7 @@ const SingleProductSection = (props) => {
 
           {props.showProdcutLink && (
             <Link
-              href={`/product/${props.id}`}
+              href={`/product/${props?.id}`}
               locale={router.locale === "ar" ? "ar" : "en"}
             >
               <PrimaryButton>

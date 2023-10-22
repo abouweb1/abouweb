@@ -12,24 +12,24 @@ function product() {
   return (
     <>
       <Head>
-        <title>Abou | {router.locale === "ar" ? product.title_ar : product.title}</title>
-        <meta name="description" content={product.description} />
+        <title>Abou | {router.locale === "ar" ? product?.title_ar : product?.title}</title>
+        <meta name="description" content={product?.description} />
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="product" />
         <meta property="og:url" content={`https://aboulazm.com/product/${id}`} />
-        <meta property="og:description" content={router.locale === "ar" ? product.description_ar : product.description_ar} />
-        <meta property="og:image" content={`${product.productImage}`} />
+        <meta property="og:description" content={router.locale === "ar" ? product?.description_ar : product?.description_ar} />
+        <meta property="og:image" content={`${product?.productImage}`} />
 
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={`https://aboulazm.com/product/${id}`} />
-        <meta property="twitter:description" content={router.locale === "ar" ? product.description_ar : product.description} />
-        <meta property="twitter:image" content={`${product.productImage}`} />
+        <meta property="twitter:description" content={router.locale === "ar" ? product?.description_ar : product?.description} />
+        <meta property="twitter:image" content={`${product?.productImage}`} />
       </Head>
       <Layout>
         <SingleProductSection
-          id={product.productId}
+          id={product?.productId}
           {...product}
         />
         <ConatctUs />
