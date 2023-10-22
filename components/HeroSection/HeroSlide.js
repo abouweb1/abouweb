@@ -18,9 +18,7 @@ const HeroSlide = (props) => {
                 <h1 draggable="false" >{props.title}</h1>
                 <p draggable="false" >{props.description}</p>
                 <Link href={`/product/${props.id}`} locale={router.locale === "ar" ? "ar" : "en"}>
-                    <a draggable="false">
                         <PrimaryButton draggable="false" >{router.locale === "ar" ? "المزيد" : "Check Now"}</PrimaryButton>
-                    </a>
                 </Link>
             </div>
         </div>

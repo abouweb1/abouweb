@@ -1,10 +1,9 @@
 import React from 'react';
 import { useRouter } from "next/router";
 import SingleProductSection from './SingleProductSection/SingleProductSection';
+import productsList from "../../data.json";
 
 const ProductsSection = (props) => {
-
-  const productsList = useRouter().locale === "en" ? props?.products?.en || [] : props?.products?.ar || [];
 
   return (
     <div id="#products" style={{minHeight:"100vh"}}>

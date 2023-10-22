@@ -1,76 +1,81 @@
-import { useState, useContext } from "react"
+import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { DisplayLoadingOverlayHandler } from "../../utilities/Contexts";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import requester from "../../utilities/requester";
 import PrimaryButton from "../Button/PrimaryButton";
-import styles from "./ContactUs.module.scss"
-import Lottie from 'react-lottie';
-import animationData from './support-team-animation.json';
+import styles from "./ContactUs.module.scss";
+import Lottie from "react-lottie";
+import animationData from "./support-team-animation.json";
 
 const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-        preserveAspectRatio: 'xMidYMid slice'
-    }
+  loop: true,
+  autoplay: true,
+  animationData: animationData,
+  rendererSettings: {
+    preserveAspectRatio: "xMidYMid slice",
+  },
 };
 
 const initialFormValues = {
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
+  name: "",
+  email: "",
+  phone: "",
+  subject: "",
+  message: "",
 };
 
 const ConatctUs = () => {
-    const router = useRouter();
-    const setDisplayLoadingOverlay = useContext(DisplayLoadingOverlayHandler);
-    const [form, setForm] = useState(initialFormValues)
-    const [error, setError] = useState(null)
+  const router = useRouter();
+  const setDisplayLoadingOverlay = useContext(DisplayLoadingOverlayHandler);
+  const [form, setForm] = useState(initialFormValues);
+  const [error, setError] = useState(null);
 
-    const inputChangeHandler = (e) => {
-        // console.log(e.target.value)
-        let newFormData = { ...form };
-        newFormData[e.target.name] = e.target.value;
-        setForm({ ...newFormData });
+  const inputChangeHandler = (e) => {
+    // console.log(e.target.value)
+    let newFormData = { ...form };
+    newFormData[e.target.name] = e.target.value;
+    setForm({ ...newFormData });
+  };
+
+  const validateEmailOrPhone = (email, phone) => {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const isValidEmail = re.test(String(email).toLowerCase());
+    const isValidPhone = phone.length >= 7;
+    console.log(isValidEmail, isValidPhone);
+    return isValidEmail && isValidPhone;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setError(null);
+    if (validateEmailOrPhone(form.email, form.phone)) {
+      let payload = { ...form, time: Date.now().toString() };
+      // console.log(payload);
+      setDisplayLoadingOverlay(true);
+      requester
+        .post("/messages/sendMessage", payload)
+        .then(() => {
+          setDisplayLoadingOverlay(false);
+          toast.success(
+            router.locale === "ar"
+              ? "تم إرسال الرساللة بنجاح"
+              : "Message Sent Successfully"
+          );
+        })
+        .catch(() => {
+          setDisplayLoadingOverlay(false);
+          toast.error("Error Occurred");
+        });
+      setForm(initialFormValues);
+    } else {
+      setError("invalid Email or Phone");
     }
+  };
 
-
-    const validateEmailOrPhone =(email, phone)=> {
-        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        const isValidEmail = re.test(String(email).toLowerCase());
-        const isValidPhone = phone.length >= 7;
-        console.log(isValidEmail, isValidPhone)
-        return (isValidEmail&&isValidPhone)
-    }
-
-
-    const handleSubmit =(e)=>{
-        e.preventDefault();
-        setError(null)
-        if(validateEmailOrPhone(form.email, form.phone)){
-            let payload = {...form, time : Date.now().toString()};
-            // console.log(payload);
-            setDisplayLoadingOverlay(true);
-            requester.post("/messages/sendMessage", payload).then(()=>{
-                setDisplayLoadingOverlay(false);
-                toast.success(router.locale === "ar" ? "تم إرسال الرساللة بنجاح"  : "Message Sent Successfully")
-            }).catch(()=>{
-                setDisplayLoadingOverlay(false);
-                toast.error("Error Occurred");
-            })
-            setForm(initialFormValues);
-        }
-        else {
-            setError("invalid Email or Phone")
-        }
-    }
-
-    return (
-        <section id={"#contactUs"} className={styles.ConatctUs}>
+  return (
+    <div>
+      {/* <section id={"#contactUs"} className={styles.ConatctUs}>
             <div className="container" dir="auto">
                 <h2 className={styles.title}>{router.locale === "ar" ? "تواصل معنا" : "Get In Touch With Us"}</h2>
                 <p className={styles.subtitle}>{router.locale === "ar" ? "لديك أي أسئلة؟ نحب أن نسمع منك." : "Have any questions? We'd love to hear from you."}</p>
@@ -104,8 +109,9 @@ const ConatctUs = () => {
                 </div>
 
             </div>
-        </section>
-    );
+        </section> */}
+    </div>
+  );
 };
 
 export default ConatctUs;

@@ -21,7 +21,7 @@ const Header = () => {
       <div className={`container ${styles.header_wrapper}`} dir="auto">
         <div>
           <Link href="/">
-            <a><img src="/assets/logo-en.png" alt="abou" /></a>
+            <img src="/assets/logo-en.png" alt="abou" />
           </Link>
         </div>
 
@@ -33,17 +33,15 @@ const Header = () => {
               <a id="products" className="hiddenInMobile" onClick={windowScroll}>{router.locale === "ar" ? "المنتجات" : "Products"}</a>
             </>
             :
-            <Link href="/"><a>{router.locale === "ar" ? "الرئيسية" : "Home"}</a></Link>
+            <Link href="/">{router.locale === "ar" ? "الرئيسية" : "Home"}</Link>
           }
 
           <a id="contactUs" onClick={windowScroll}>{router.locale === "ar" ? "تواصل" : "Contact"}</a>
 
           <Link href={router.asPath} locale={router.locale === "ar" ? "en" : "ar"}>
-            <a>
               <span>{router.locale === "ar" ? "English" : "العربية"}</span>
                   &nbsp;
                   <GrLanguage />
-            </a>
           </Link>
 
 
