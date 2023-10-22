@@ -1,9 +1,0 @@
-@import "../../../styles/varibles.scss";
-
-.fakelink{
-    cursor: pointer;
-    color: $primary;
-    &:hover{
-        text-decoration: underline;
-    }
-}

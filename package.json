@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "devextreme": "^20.2.6",
-    "devextreme-react": "^20.2.6",
     "globby": "^11.0.3",
     "next": "^13.5.6",
     "nprogress": "^0.2.0",
