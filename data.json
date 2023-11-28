@@ -200,5 +200,71 @@
     "productImage": "/assets/products/wg1.jpg",
     "productImageId": "60d140dfc5068600044fc54b",
     "superTitle_ar": ""
+  },
+  {
+    "bulletList": [],
+    "bulletList_ar": [],
+    "gallery": [
+      {
+        "imageUrl": "/assets/products/ib.jpg"
+      }
+    ],
+    "_id": "60d1406ec5068600045fc54a",
+    "title": "Insulation bitumin",
+    "title_ar": "بيتومين عازل",
+    "description": "Quickly heated and sturdy, quick to complete production, home repairs and daily DIY projects. After fully preheating, there will be some melted binder. With a glue gun,   It is also very easy to handle  The hot melting glue can be used to bond a great diversity of materials such as wood, plastic, glass, metal, stone, ceramic, shell, brick, paper, wicker, lace, cotton, fabric.  Good flexibility and luster, durability for daily gluing . Product features:  Fast bonding speed, strong viscosity, anti-aging, non-toxic, good thermal stability, operation. Use range:  Used in ceramics, resins, plastics, wood, paper products, toys, electronics, leather, etc. Product Name: Transparent hot melt glue stick  Stable and easy to use , also Incredibly Durable and Long lasting",
+    "description_ar": "اجود انواع البيتومين العازل للأرضيات، والأسقف  ويستخدم ايضا في رصف الشوارع والطرقات  وحماية خطوط الأنانبيب تحت الأرض من التآكل و الصدئ  ويستخدم ايضا في صناعة أحبار الكتابة المختلفة، وصناعة ملمعات الأحذية",
+    "active": true,
+    "productId": "insulation_bitumin",
+    "heroSectionItem": true,
+    "__v": 0,
+    "productImage": "/assets/products/ib.jpg",
+    "productImageId": "60d140dfc506860044fc54b",
+    "superTitle_ar": ""
+  },
+  {
+    "bulletList": [],
+    "bulletList_ar": [],
+    "gallery": [
+      {
+        "imageUrl": "/assets/products/gl.jpg"
+      }
+    ],
+    "_id": "60d1406ec5068600046fc54a",
+    "title": "Glance",
+    "title_ar": "جالانس ملمع",
+    "description": "This product is used for polishing leather both natural and artificial/synthetic leather. It gives instant shine and leaves no stains. Available in Black and transparent.",
+    "description_ar": "ملمع للجلود الطبيعية والصناعية يعطى للجلود اللمعان المطلوب ولا يترك اى اثر متوفر منه الشفاف والاسود",
+    "active": true,
+    "productId": "Glance",
+    "heroSectionItem": true,
+    "__v": 0,
+    "productImage": "/assets/products/gl.jpg",
+    "productImageId": "60d140dfc5068600046fc54b",
+    "superTitle_ar": ""
+  },
+  {
+    "bulletList": [],
+    "bulletList_ar": [],
+    "gallery": [
+      {
+        "imageUrl": "/assets/products/d1.jpg"
+      },
+      {
+        "imageUrl": "/assets/products/d2.jpg"
+      }
+    ],
+    "_id": "60d1406ec5068600047fc54a",
+    "title": "N.C Paint",
+    "title_ar": "دوكو",
+    "description": "Matte paint for maximum coating. For Cars, wood, and metal. Available in black",
+    "description_ar": "طلاء مطفي غير عاكس  لتغطية فائقة مثالي لطلاء السيارات و الاسطح متوفر بالوان الاسود مع اماكنية صنع اي لون",
+    "active": true,
+    "productId": "ncpaint",
+    "heroSectionItem": true,
+    "__v": 0,
+    "productImage": "/assets/products/d1.jpg",
+    "productImageId": "60d140dfc5068600047fc54b",
+    "superTitle_ar": ""
   }
 ]
